@@ -30,7 +30,7 @@
         header {
             width: 100%;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.2);
+            background: #294fff; /* Same header background color */
             position: fixed;
             top: 0;
             left: 0;
@@ -82,26 +82,33 @@
             max-width: 600px;
             font-family: 'Inter', sans-serif;
         }
+.cta-button {
+    background-color: transparent;  /* Transparent background */
+    color: white;
+    margin: 20px;/* Blue text */
+    padding: 15px 30px;             /* Button padding */
+    border: 1px solid white;        /* Outer white border */
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    z-index: 1;
+    transition: background-color 0.3s ease; /* Only the background color will change on hover */
+    font-family: 'Tourney', sans-serif;
+}
 
-        .cta-button {
-            background-color: white;
-            color: #294fff;
-            padding: 15px 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-family: 'Inter', sans-serif;
-        }
 
-        .cta-button:hover {
-            background-color: #e0e0e0;
-        }
+.cta-button:hover {
+    background-color: #d8d876;   /* Blue background on hover */
+    color: black;
+    /*font-family: 'Tourney', sans-serif;*/
+}
+
 
         footer {
             padding: 10px;
-            background: rgba(0, 0, 0, 0.2);
+            background-color: #294fff;
             width: 100%;
             text-align: center;
             position: fixed;
@@ -147,10 +154,13 @@
 }
         .speak {
             font-family: 'Tourney', sans-serif;
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: white;
         }
+
     </style>
+
+
 </head>
 <body>
     <header>
@@ -158,19 +168,22 @@
         <nav>
 <!--            <a href="#features">Features</a>-->
             <a href="career.html">Careers</a>
+
+            <a class="social-link" href="https://www.linkedin.com/company/deep-statistics/about/?viewAsMember=true" target="_blank">About Us</a>
         </nav>
     </header>
 
     <main>
             <div class="speak">Deep Statistics As A Service</div >
-        <p>Unlock the power of your data with advanced statistical insights and visualizations tailored to your business needs.</p>
+
+        <p>When your business needs a clear understanding of the underlying reasons for business profit skewness, we eliminate the need for months of assembling technical teams, ensuring great understanding within days. Unlock the full potential of your data by employing sophisticated statistical analysis and actually meaningful visualizations.</p>
         <button class="cta-button" onclick="window.location.href='mailto:sudhir.singh@statistics.org.in?subject=Contact%20Deep%20Statistics'">Contact Us</button>
 
     </main>
 
     <footer>
         <span>&copy; 2025 Deep Statistics. All rights reserved.</span>
-<!--        <a class="social-link" href="https://www.linkedin.com" target="_blank">LinkedIn</a>-->
+
     </footer>
 </body>
 </html>
