@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - Deep Statistics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Consistent Header Styling */
+
+                @font-face {
+            font-family: 'Tourney';
+            src: url('Tourney.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        header {
+            width: 100%;
+            padding: 20px;
+            background: #294fff; /* Same header background color */
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            z-index: 10; /* Ensures the header stays on top */
+        }
+
+        .logo {
+            font-family: 'Tourney', sans-serif;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            padding: 0 10px;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Page content styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        main {
+            padding: 100px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-family: 'Tourney', sans-serif;
+        }
+
+        .job-listing {
+            margin-bottom: 30px;
+        }
+
+        .job-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #294fff;
+        }
+
+        .job-description {
+            font-size: 1rem;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .apply-button {
+            background-color: #294fff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        .apply-button:hover {
+            background-color: #1e3bb2;
+        }
+
+        .apply-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .form-field {
+            margin-bottom: 15px;
+        }
+
+        .form-field label {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .form-field input,
+        .form-field textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-field textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        footer {
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            width: 100%;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            color: white;
+        }
+
+        .social-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .social-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .job-title {
+                font-size: 1.25rem;
+            }
+        }
+        .logo a {
+  text-decoration: none; /* Removes the underline */
+  color: inherit; /* Inherits the color from the parent element */
+
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="index.html">Deep Statistics</a>   </div>
+        <nav>
+<!--            <a href="#features">Features</a>-->
+<!--            <a href="#about">About</a>-->
+<!--            <a href="#careers">Careers</a>-->
+        </nav>
+    </header>
+
+    <main>
+        <h1>Careers at Deep Statistics</h1>
+
+        <!-- Job Listing 1 -->
+        <section class="job-listing">
+            <div class="job-title">Data Scientist</div>
+            <div class="job-description">
+                We are looking for a passionate Data Scientist to join our team. You will work on advanced statistical analysis and model building.
+            </div>
+            <button class="apply-button" onclick="window.location.href='mailto:your-email@example.com?subject=Job%20Application%20-%20Data%20Scientist'">Apply Now</button>
+        </section>
+
+        <!-- Job Listing 2 -->
+        <section class="job-listing">
+            <div class="job-title">Software Engineer</div>
+            <div class="job-description">
+                Join us as a Software Engineer! Work on building cutting-edge tools to help users unlock valuable insights from their data.
+            </div>
+            <button class="apply-button" onclick="window.location.href='mailto:your-email@example.com?subject=Job%20Application%20-%20Software%20Engineer'">Apply Now</button>
+        </section>
+
+        <!-- Application Form -->
+        <section class="apply-form">
+            <h2>Apply for a Job</h2>
+            <form action="mailto:your-email@example.com" method="post" enctype="multipart/form-data">
+                <div class="form-field">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-field">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-field">
+                    <label for="cover-letter">Cover Letter</label>
+                    <textarea id="cover-letter" name="cover-letter" required></textarea>
+                </div>
+                <div class="form-field">
+                    <label for="resume">Upload Resume</label>
+                    <input type="file" id="resume" name="resume" required>
+                </div>
+                <button type="submit" class="apply-button">Submit Application</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <span>&copy; 2025 Deep Statistics. All rights reserved.</span>
+        <a class="social-link" href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+    </footer>
+</body>
+</html>

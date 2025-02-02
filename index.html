@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deep Statistics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         @font-face {
             font-family: 'Tourney';
@@ -16,27 +17,160 @@
             margin: 0;
             padding: 0;
             height: 100%;
+            background-color: #294fff;
+            color: white;
+            font-family: 'Inter', sans-serif;
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        header {
+            width: 100%;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-family: 'Tourney', sans-serif;
+            font-size: 1.5rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            padding: 0 10px;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #294fff;
+            padding: 80px 20px 20px; /* Adjust for header space */
         }
 
         h1 {
-            font-family: 'Tourney', sans-serif;
             font-size: 4rem;
-            color: white;
+            margin: 0.5em 0;
+            font-family: 'Tourney', sans-serif;
+        }
+
+        p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .cta-button {
+            background-color: white;
+            color: #294fff;
+            padding: 15px 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .cta-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        footer {
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            width: 100%;
             text-align: center;
+            position: fixed;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .social-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .social-link:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 600px) {
             h1 {
                 font-size: 2.5rem;
             }
+
+            header nav a {
+                font-size: 0.9rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            nav {
+                gap: 10px;
+            }
+        }
+        .logo a {
+  text-decoration: none; /* Removes the underline */
+  color: inherit; /* Inherits the color from the parent element */
+}
+        .speak {
+            font-family: 'Tourney', sans-serif;
+            font-size: 3rem;
+            color: white;
         }
     </style>
 </head>
 <body>
-    <h1>Deep Statistics</h1>
+    <header>
+        <div class="logo"><a href="index.html" >Deep Statistics</a>   </div>
+        <nav>
+<!--            <a href="#features">Features</a>-->
+            <a href="career.html">Careers</a>
+        </nav>
+    </header>
+
+    <main>
+            <div class="speak">Deep Statistics As A Service</div >
+        <p>Unlock the power of your data with advanced statistical insights and visualizations tailored to your business needs.</p>
+        <button class="cta-button" onclick="window.location.href='mailto:sudhir.singh@statistics.org.in?subject=Contact%20Deep%20Statistics'">Contact Us</button>
+
+    </main>
+
+    <footer>
+        <span>&copy; 2025 Deep Statistics. All rights reserved.</span>
+<!--        <a class="social-link" href="https://www.linkedin.com" target="_blank">LinkedIn</a>-->
+    </footer>
 </body>
 </html>
