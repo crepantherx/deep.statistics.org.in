@@ -7,6 +7,13 @@
 }
 
 @font-face {
+    font-family: 'adl';
+    src: url('fonts/adelia.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: "Uni Sans Heavy Regular";
     src: url("https://db.onlinewebfonts.com/t/4f6fb2fa3c231278167b36e966718cbb.eot");
     src: url("https://db.onlinewebfonts.com/t/4f6fb2fa3c231278167b36e966718cbb.eot?#iefix")format("embedded-opentype"),
@@ -23,69 +30,26 @@ body{
     place-content: center;
 
     height: 100vh;
-
-    border: 5px solid white;
     background-color: #050505;
 }
 
 body > header,
 body > main,
 body > footer {
-    width: 80%;
+    width: 80vw;
 }
+
 
 
 header {
-    padding: 20px;
-    background: #050505;
-    position: fixed;
-    top: 0;
-    left: 0;
-    box-sizing: border-box;
-
-    text-align: center;
-    bottom: 0;
-    gap: 15px;
-    font-family: 'Inter', sans-serif;
-}
-
-header > nav {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-items: center;
-    justify-content: space-around;
-    padding: 20px;
-    border-bottom: 1px solid white;
-    font-family: 'Tourney', sans-serif;
-}
-
-header > nav > a {
-    text-decoration: none;
-    font-size: 1.5rem;
-    color: white;
-
-}
-
-main {
-    display: grid;
-    grid-template-columns: 1fr;
-    margin: 2rem;
-}
-
-main > div {
-    border: 1px solid white;
-    height: 100px;
-}
-
-
-
-
-footer {
     padding: 10px;
     background-color: #050505;
     text-align: center;
-    /*position: fixed;*/
-    bottom: 0;
+    position: fixed;
+    top: 0;
+    left: 50%; /* Position it in the center horizontally */
+    transform: translateX(-50%); /* Adjust it by 50% of its own width to make it truly centered */
+    width: 100%; /* Ensure the header spans full width of viewport */
     display: grid;
     gap: 15px;
     font-family: 'Inter', sans-serif;
@@ -93,16 +57,112 @@ footer {
     place-items: center;
 }
 
+header > nav {
+    width: 70vw;
+    display: grid;
+    place-items: stretch;
+    place-content: space-between;
+    grid-auto-flow: column;
+    padding: 20px;
+    font-family: 'Tourney', sans-serif;
+
+}
+
+header > nav > a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: white;
+}
+
+
+
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 2rem;
+    place-content: flex-start;
+    place-items: center;
+    height: 81vh;
+}
+main > div {
+    color: white;
+
+}
+
+
+.powered-by-ai {
+    display: grid;
+    place-items: center;
+    font-family: 'adl', cursive;
+    margin-bottom: 20px;
+}
+
+.hero {
+
+    width: 30vw;
+    height: auto;
+    display: grid;
+    place-items: center;
+    place-content: center;
+    place-self: center;
+    text-align: center;
+}
+
+.hero img {
+
+    width: 15vw; /* Makes the image fill the width of the div */
+    height: auto; /* Maintains aspect ratio */
+}
+
+.hero > .intro {
+    margin-top: 1rem;
+
+    font-family: 'Uni Sans Heavy Regular', cursive;
+    font-size: 1.1rem;
+    color: #5e5a5a;
+}
+
+.hero > .about {
+    margin: 1rem;
+
+
+    font-family: 'Uni Sans Heavy Regular', cursive;
+    font-size: 1.4rem;
+    color: #949191;
+}
+
+.trusted-by {
+
+    width: 30vw;
+    height: auto;
+    display: grid;
+    place-items: center;
+    place-content: center;
+    place-self: center;
+}
+
+
+footer {
+
+    padding: 10px;
+    background-color: #050505;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    display: grid;
+    gap: 15px;
+    font-family: 'Inter', sans-serif;
+    place-content: center;
+    place-items: center;
+}
 footer > nav {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
     justify-content: space-evenly;
     padding: 20px;
-    border-top: 1px solid white;
     font-family: 'Tourney', sans-serif;
 }
-
 footer > nav > a {
     text-decoration: none;
     font-size: .8rem;
