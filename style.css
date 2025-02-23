@@ -23,13 +23,14 @@
     url("https://db.onlinewebfonts.com/t/4f6fb2fa3c231278167b36e966718cbb.svg#Uni Sans Heavy Regular")format("svg");
 }
 
+/** {*/
+/*    border: 1px solid white;*/
+/*}*/
 
 body{
     display: grid;
     place-items: center;
     place-content: center;
-
-    height: 100vh;
     background-color: #050505;
 }
 
@@ -42,19 +43,15 @@ body > footer {
 
 
 header {
-    padding: 10px;
     background-color: #050505;
     text-align: center;
-    position: fixed;
-    top: 0;
-    left: 50%; /* Position it in the center horizontally */
-    transform: translateX(-50%); /* Adjust it by 50% of its own width to make it truly centered */
     width: 100%; /* Ensure the header spans full width of viewport */
     display: grid;
     gap: 15px;
     font-family: 'Inter', sans-serif;
     place-content: center;
     place-items: center;
+    place-self: center;
 }
 
 header > nav {
@@ -65,6 +62,7 @@ header > nav {
     grid-auto-flow: column;
     padding: 20px;
     font-family: 'Tourney', sans-serif;
+    border-bottom: 1px solid #252424;
 
 }
 
@@ -82,7 +80,6 @@ main {
     margin: 2rem;
     place-content: flex-start;
     place-items: center;
-    height: 81vh;
 }
 main > div {
     color: white;
@@ -94,6 +91,8 @@ main > div {
     display: grid;
     place-items: center;
     font-family: 'adl', cursive;
+    padding: 10px;
+
     margin-bottom: 20px;
 }
 
@@ -109,29 +108,28 @@ main > div {
 }
 
 .hero img {
-
+    margin: 30px;
     width: 15vw; /* Makes the image fill the width of the div */
     height: auto; /* Maintains aspect ratio */
 }
 
 .hero > .intro {
     margin-top: 1rem;
-
     font-family: 'Uni Sans Heavy Regular', cursive;
-    font-size: 1.1rem;
-    color: #5e5a5a;
+    font-size: 1rem;
+    color: #474444;
 }
 
 .hero > .about {
     margin: 1rem;
 
 
-    font-family: 'Uni Sans Heavy Regular', cursive;
-    font-size: 1.4rem;
+    font-family: 'Inter', cursive;
+    font-size: 1rem;
     color: #949191;
 }
 
-.trusted-by {
+.testimonials {
 
     width: 30vw;
     height: auto;
@@ -139,7 +137,60 @@ main > div {
     place-items: center;
     place-content: center;
     place-self: center;
+    margin: 20px;
 }
+
+.testimonials > .trusted-by-banner {
+    display: grid;
+    place-items: center;
+    place-content: center;
+    place-self: center;
+    text-align: center;
+    font-family: 'Uni Sans Heavy Regular', cursive;
+}
+
+.testimonials > .client-banner {
+    display: grid;
+    place-items: center;
+    place-content: center;
+    place-self: center;
+    text-align: center;
+    margin: 20px;
+
+    grid-auto-flow: column;
+    gap: 20px;
+}
+
+.testimonials > .client-banner > img {
+    width: 60px;
+    height: auto;
+}
+
+
+main > .pricing {
+    margin: 30px;
+    display: grid;
+    place-items: center;
+    place-content: center;
+    place-self: center;
+
+    grid-auto-flow: column;
+    gap: 20px;
+}
+
+main > .pricing > .card {
+    display: grid;
+    place-items: center;
+    place-content: center;
+    place-self: center;
+    text-align: center;
+    font-family: 'Tourney', cursive;
+    border: 1px solid white;
+    gap: 5px;
+    padding: 50px;
+}
+
+
 
 
 footer {
@@ -147,7 +198,7 @@ footer {
     padding: 10px;
     background-color: #050505;
     text-align: center;
-    position: fixed;
+    /*position: fixed;*/
     bottom: 0;
     display: grid;
     gap: 15px;
@@ -161,12 +212,13 @@ footer > nav {
     justify-items: center;
     justify-content: space-evenly;
     padding: 20px;
-    font-family: 'Tourney', sans-serif;
+    font-family: 'Uni Sans Heavy Regular', cursive;
 }
 footer > nav > a {
     text-decoration: none;
     font-size: .8rem;
     color: white;
+
 
 }
 
