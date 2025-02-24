@@ -23,6 +23,10 @@
     url("https://db.onlinewebfonts.com/t/4f6fb2fa3c231278167b36e966718cbb.svg#Uni Sans Heavy Regular")format("svg");
 }
 
+/** {*/
+/*    border: 1px solid white;*/
+/*}*/
+
 body{
     display: grid;
     place-items: center;
@@ -57,7 +61,7 @@ header > nav {
     place-items: center;
     place-content: space-between;
     grid-auto-flow: column;
-    padding: 20px;
+    /*padding: 20px;*/
     font-family: 'Tourney', sans-serif;
     border-bottom: 1px solid #252424;
 
@@ -152,22 +156,9 @@ header > nav > a {
     text-decoration: none;
     color: #ffffff;
     font-size: 1.1rem;
+    font-family: 'Uni Sans Heavy Regular', 'Uni Sans', sans-serif;
 }
 
-
-/*!* Profile button container *!*/
-/*.navbar {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    padding: 10px 20px;*/
-/*    color: white;*/
-/*}*/
-
-/*.navbar .nav-item {*/
-/*    margin-right: 20px;*/
-/*}*/
-
-/* Profile container (inline) */
 .profile-container {
     z-index: 100;
     background: none;
@@ -176,15 +167,13 @@ header > nav > a {
     padding: 10px;
 }
 
-/* Profile icon (black) */
 .profile-icon {
     width: 35px;
     height: 35px;
-    fill: #333; /* Adjust color */
+    fill: #333;
     background: #050505;
 }
 
-/* Profile dropdown */
 .profile-dropdown {
     position: absolute;
     top: 100%;
@@ -236,7 +225,6 @@ main > fieldset > .page-1 {
 
 }
 
-
 main > fieldset > .page-1 > .hero > .powered-by-ai {
     display: grid;
     place-items: center;
@@ -245,6 +233,11 @@ main > fieldset > .page-1 > .hero > .powered-by-ai {
     color: white;
     margin: 20px;
     font-size: 0.8rem;
+    letter-spacing: 2px;
+    background: linear-gradient(45deg, #ff6b6b, #6b92ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
 }
 
 main > fieldset >  .page-1 >.hero {
@@ -347,8 +340,6 @@ legend {
     font-weight: bold;
     color: white;
     font-family: 'adl', cursive;
-    /*width: 70vw ;*/
-    /*font-size: 1.2rem;*/
 }
 
 
