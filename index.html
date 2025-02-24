@@ -44,17 +44,19 @@
             <div>
                 <div class="navbar">
 
-                    <!-- Profile Section (Inline) -->
-                    <div class="profile-container" onclick="toggleProfileMenu()">
+
+                    <button class="profile-container" id="profile-hamburger">
                         <svg class="profile-icon" viewBox="0 0 24 24">
                             <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/>
                         </svg>
-                        <!-- Dropdown Menu -->
-                        <div class="profile-dropdown" id="profileDropdown">
-                            <a href="#">Sign Up</a>
-                            <a href="#">Login</a>
-                        </div>
-                    </div>
+                    </button>
+
+                    <nav class="profile-panel" id="profilePanel">
+                        <ul>
+                            <li><a href="#">Login</a></li>
+                            <li><a href="#">Sign Up</a></li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
 <!--            <a href="https://www.example.com"><img src="icons/user.png" alt="Logo" style="width: 25px; height: auto;"></a>-->
@@ -188,46 +190,24 @@
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Get the current page from the URL
-            let currentPage = window.location.pathname.split("/").pop().replace(".html", "");
-
-            // Handle cases where the user is on the root ("/")
-            if (currentPage === "") {
-                currentPage = "index";
-            }
-
-            // Find the button that matches the current page and add 'active' class
-            document.querySelectorAll(".clickbutton").forEach(button => {
-                if (button.dataset.page === currentPage) {
-                    button.classList.add("active");
-                }
-            });
-        });
 
         // Toggle the menu on hamburger click
         const hamburger = document.getElementById('hamburger');
+        const profileHamburger = document.getElementById('profile-hamburger');
         const sidePanel = document.getElementById('sidePanel');
+
+        const profilePanel = document.getElementById('profilePanel');
 
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             sidePanel.classList.toggle('active');
         });
 
-        function toggleProfileMenu() {
-            let dropdown = document.getElementById("profileDropdown");
-            dropdown.classList.toggle("active");
-        }
-
-        // Close dropdown when clicking outside
-        document.addEventListener("click", function(event) {
-            let dropdown = document.getElementById("profileDropdown");
-            let button = document.querySelector(".profile-btn");
-
-            if (!dropdown.contains(event.target) && !button.contains(event.target)) {
-                dropdown.classList.remove("active");
-            }
+        profileHamburger.addEventListener('click', () => {
+            profileHamburger.classList.toggle('active');
+            profilePanel.classList.toggle('active');
         });
+
     </script>
 
 </body>
