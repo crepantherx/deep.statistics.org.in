@@ -23,16 +23,24 @@
     url("https://db.onlinewebfonts.com/t/4f6fb2fa3c231278167b36e966718cbb.svg#Uni Sans Heavy Regular")format("svg");
 }
 
-/** {*/
-/*    border: 1px solid white;*/
-/*}*/
+::-webkit-scrollbar {
+    display: none;
+}
 
-body{
+
+
+/* Ensure scrolling still works */
+body {
+    overflow: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
     display: grid;
     place-items: center;
     place-content: center;
     background-color: #050505;
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
+    grid-template-rows: auto 1fr auto; /* Header (auto), Main (flexible), Footer (auto) */
+    min-height: 100vh; /* Ensures full viewport height */
 }
 
 body > header,
@@ -209,7 +217,7 @@ header > nav > a {
 main {
     display: grid;
     grid-template-columns: 1fr;
-    margin: 2rem;
+    /*margin: 2rem;*/
     place-content: flex-start;
     place-items: center;
 }
@@ -220,8 +228,8 @@ main > div {
 main > fieldset > .page-1 {
     display: grid;
     grid-auto-flow: row;
-    gap: 3vh;
-    height: 85vh;
+    /*gap: 3vh;*/
+    /*height: 85vh;*/
 
 }
 
@@ -274,7 +282,7 @@ main > fieldset > .page-1 > .hero > .about {
     font-size: 1rem;
     color: #949191;
 }
-main > fieldset > .page-1 > .hero > .learn-more {
+.learn-more {
     font-size: 1rem;
     color: white;
     background-color: #050505;
@@ -329,12 +337,20 @@ main > fieldset >  .page-1 > .testimonials > .client-banner > img {
 
 fieldset {
     border-top: 1px solid #252424;
+    border-top: none;
     border-left: none;
     border-right: none;
     border-bottom: none;
     text-align: center;
     width: 70vw;
     padding: 40px;
+    /*margin-top: 80px;*/
+    /*margin-bottom: 80px;*/
+    display: grid;
+    grid-auto-flow: row;
+    place-items: center;
+
+
 }
 legend {
     font-weight: bold;
@@ -352,7 +368,26 @@ main > fieldset > .pricing {
 
     grid-auto-flow: column;
     gap: 40px;
-    height: 80vh;
+
+    color: white;
+    font-family: 'Uni Sans Heavy Regular', cursive;
+    /*height: 85vh;*/
+}
+
+main > fieldset > .about-us {
+    margin: 30px;
+    display: grid;
+    place-items: center;
+    place-content: center;
+    place-self: center;
+
+    grid-auto-flow: row;
+    gap: 40px;
+
+    color: white;
+    font-family: 'Inter', cursive;
+    /*height: 85vh;*/
+    width: 30vw;
 }
 
 main > fieldset > .pricing > .card {
@@ -405,19 +440,17 @@ main > fieldset > .pricing > .card > .features {
 }
 
 footer {
-
     padding: 10px;
     background-color: #050505;
     text-align: center;
-    /*position: fixed;*/
-    bottom: 0;
-    display: grid;
-    grid-auto-flow: row;
+    width: max-content;
+    display: flex;
+    flex-direction: column;
     gap: 15px;
     font-family: 'Inter', sans-serif;
-    place-content: center;
-    place-items: center;
-
+    align-items: center;
+    justify-content: center;
+    margin: auto;
 }
 
 footer > section {
