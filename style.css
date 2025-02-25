@@ -28,7 +28,6 @@
 }
 
 
-
 /* Ensure scrolling still works */
 body {
     overflow: auto;
@@ -233,7 +232,7 @@ main > fieldset > .page-1 {
 
 }
 
-main > fieldset > .page-1 > .hero > .powered-by-ai {
+.powered-by-ai {
     display: grid;
     place-items: center;
     font-family: 'adl', cursive;
@@ -247,6 +246,34 @@ main > fieldset > .page-1 > .hero > .powered-by-ai {
     -webkit-text-fill-color: transparent;
 
 }
+
+.text-glow {
+    display: grid;
+    place-items: center;
+    font-family: 'adl', cursive;
+    color: white;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    background: linear-gradient(45deg, #c8d6c0, #948cbd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+
+.tier-glow {
+    display: grid;
+    place-items: center;
+    font-family: 'adl', cursive;
+    color: white;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    background: linear-gradient(45deg, #95cfa7, #0c743e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
 
 main > fieldset >  .page-1 >.hero {
 
@@ -349,6 +376,7 @@ fieldset {
     display: grid;
     grid-auto-flow: row;
     place-items: center;
+    place-content: center;
 
 
 }
@@ -360,18 +388,11 @@ legend {
 
 
 main > fieldset > .pricing {
-    margin: 30px;
-    display: grid;
-    place-items: center;
-    place-content: center;
-    place-self: center;
-
-    grid-auto-flow: column;
-    gap: 40px;
-
-    color: white;
-    font-family: 'Uni Sans Heavy Regular', cursive;
-    /*height: 85vh;*/
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between books */
+    justify-content: center;
+    max-width: 1100px;
 }
 
 main > fieldset > .about-us {
@@ -404,7 +425,11 @@ main > fieldset > .pricing > .card {
     box-shadow: 0px 0px 120px rgba(80, 82, 91, 0.44);
     border-radius: 50px;
 
+    width: 180px; /* Width of the book */
+    /*height: 200px; !* Height of the book *!*/
+    position: relative;
 }
+
 
 main > fieldset > .pricing > .card > .card-header {
     font-size: 1.5rem;
