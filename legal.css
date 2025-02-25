@@ -104,11 +104,11 @@ body.no-scroll {
 }
 
 .book:hover .cover {
-    transform: rotateY(-40deg); /* Open the cover */
+    transform: rotateY(-20deg); /* Open the cover */
 }
 
 .book:hover .pages {
-    transform: rotateY(-20deg); /* Slight rotation for pages */
+    transform: rotateY(0deg); /* Slight rotation for pages */
 }
 
 .subpage {
