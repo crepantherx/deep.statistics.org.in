@@ -1,3 +1,8 @@
+.steps{
+    display: grid;
+    gap: 8vh;
+}
+
 .demo {
     text-align: left;
     font-family: 'Inter', sans-serif;
@@ -29,6 +34,8 @@
 }
 
 .pattern img {
-    display: grid;
-    width: 45vw;
+    /*display: grid;*/
+    width: 30vw;
+    /*grid-auto-flow: column;*/
+    height: 50vh;
 }

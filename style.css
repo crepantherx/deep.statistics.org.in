@@ -219,6 +219,7 @@ main {
     /*margin: 2rem;*/
     place-content: flex-start;
     place-items: center;
+    margin: 50px;
 }
 main > div {
     color: white;
@@ -392,6 +393,7 @@ fieldset {
 
 }
 legend {
+    padding: 50px;
     font-weight: bold;
     color: white;
     font-family: 'adl', cursive;
