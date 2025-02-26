@@ -28,6 +28,7 @@
 }
 
 
+
 /* Ensure scrolling still works */
 body {
     overflow: auto;
@@ -48,8 +49,6 @@ body > footer {
     width: 80vw;
 }
 
-
-
 header {
     background-color: #050505;
     text-align: center;
@@ -68,7 +67,7 @@ header > nav {
     place-items: center;
     place-content: space-between;
     grid-auto-flow: column;
-    /*padding: 20px;*/
+    padding-bottom:5px;
     font-family: 'Tourney', sans-serif;
     border-bottom: 1px solid #252424;
 
@@ -85,13 +84,13 @@ header > nav > a {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 10px;
+    /*padding: 10px;*/
 }
 
 .hamburger .line {
     display: block;
-    width: 30px;
-    height: 3px;
+    width: 20px;
+    height: 1px;
     background: #ffffff;
     margin: 6px 0;
     transition: all 0.3s ease;
@@ -171,15 +170,17 @@ header > nav > a {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 10px;
+    /*padding: 10px;*/
 }
 
 .profile-icon {
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
     fill: #ffffff;
     background: #050505;
 }
+
+
 
 .profile-dropdown {
     position: absolute;
@@ -219,7 +220,7 @@ main {
     /*margin: 2rem;*/
     place-content: flex-start;
     place-items: center;
-    margin: 50px;
+    margin: 40px;
 }
 main > div {
     color: white;
@@ -393,7 +394,7 @@ fieldset {
 
 }
 legend {
-    padding: 50px;
+    padding: 40px;
     font-weight: bold;
     color: white;
     font-family: 'adl', cursive;
@@ -421,7 +422,7 @@ main > fieldset > .about-us {
     color: white;
     font-family: 'Inter', cursive;
     /*height: 85vh;*/
-    width: 30vw;
+    width: 27vw;
 }
 
 main > fieldset > .pricing > .card {
@@ -516,6 +517,6 @@ footer > nav {
 footer > nav > a {
     text-decoration: none;
     font-size: .8rem;
-    color: white;
-}
+    color: #ffffff;
+}aa
 
