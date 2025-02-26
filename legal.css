@@ -127,7 +127,7 @@ body.no-scroll {
     background-color: black;
     border: 1px solid #252424;
     width: 50vw;
-    height: 70vh;
+    height: 50vh;
     overflow-y: auto;
     padding: 100px;
     position: relative;
