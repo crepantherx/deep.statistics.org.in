@@ -241,7 +241,7 @@ main > fieldset > .page-1 {
     margin: 20px;
     font-size: 0.8rem;
     letter-spacing: 2px;
-    background: linear-gradient(45deg, #225794, #1ca913);
+    background: linear-gradient(45deg, #37cf0c, #cec7d2);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
@@ -294,10 +294,21 @@ main > fieldset >  .page-1 > .hero img {
     height: auto; /* Maintains aspect ratio */
 }
 
-main > fieldset >  .page-1 > .hero > .intro {
-    margin-top: 4rem;
+/*main > fieldset >  .page-1 > .hero > .intro {*/
+/*    margin-top: 4rem;*/
+/*    font-family: 'adl', cursive;*/
+/*    font-size: 0.9rem;*/
+/*    color: #969090;*/
+/*    !*background: linear-gradient(45deg, #555f53, #b0a5b6);*!*/
+/*    !*-webkit-background-clip: text;*!*/
+/*    !*-webkit-text-fill-color: transparent;*!*/
+/*}*/
+
+main > fieldset >  .page-1 > .hero > .service {
+    /*margin-top: 4rem;*/
+    margin-top: 1rem;
     font-family: 'Uni Sans Heavy Regular', cursive;
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: #ffffff;
 }
 
