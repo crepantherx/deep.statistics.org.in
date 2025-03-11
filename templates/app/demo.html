@@ -11,57 +11,35 @@
     <div id="layout">
         <div id="head">How it works</div>
         <div id="tail">
-{#<div style="font-family: 'Inter', sans-serif">Global Average Temperature Increase (1850–2024)</div>#}
-{#                    <canvas id="spiralChart"></canvas>#}
 
-            <a href="{% url 'upload_csv' %}">
-{#            <button class="neomorphic-button">Basic Demo</button>#}
-        </a>
+            <div class="slideshow-container">
+                <div class="slide active">
+                    <h2>Understanding</h2>
+                    <p>We make sure that your data is easily understandable to you by effective visualization</p>
+                </div>
+                <div class="slide">
+                    <h2>Patterns</h2>
+                    <p>Helps you in understanding Anomalies & patterns in your data, based on relation of every column combination</p>
+                </div>
+                <div class="slide">
+                    <h2>Insights</h2>
+                    <p>Thereafter, simply ask your question, about business your problems, in natual language/voice, and see if your data can tell a story</p>
+                </div>
+
+                <div class="nav-container">
+                    <a class="prev" onclick="changeSlide(-1)">❮</a>
+                    <div class="dots-container">
+                        <span class="dot active-dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                    </div>
+                    <a class="next" onclick="changeSlide(1)">❯</a>
+                </div>
+            </div>
 
             <a href="{% url 'login' %}">
                     <button class="neomorphic-button">Demo</button>
             </a>
-            <br><br>
-            <div class="demo-tutorial" style="width: 80vh;">
-                <details>
-                    <summary>Phase I <br><br>We make sure that your data is easily understandable to you by effective visualization</summary>
-                    <ol>
-                        <li>Upload your dataset or connect your data source</li>
-                        <li>
-                            (Understand your data) See best suited highly crafted visualizations(out of 10,000 visualizations), detailed breakdown of each column of your dataset.
-
-                            <div>
-
-{#                    <div class="graphs">#}
-{#                        <img src="{% static 'images/demo/America+homeless+transport.png' %}" alt="">#}
-{#                        <img src="{% static 'images/demo/donut.png' %}" alt="">#}
-{#                        <img src="{% static 'images/demo/year.png' %}" alt="">#}
-{#                        <img src="{% static 'images/demo/location.png' %}" alt="">#}
-{#                    </div>#}
-                            </div>
-                        </li>
-                    </ol>
-                </details>
-
-                <details>
-                    <summary>Phase II<br><br>Helps you in understanding Anomalies & patterns in your data, based on relation of every column combination</summary>
-                    <ol>
-                        <li>Shows you detect every small anomaly or pattern within your dataset, and any relation of those anomaly with any pattern<div class="pattern">
-{#                    <img src="{% static 'images/demo/net.png' %}" style="background: black" alt="">#}
-{#                    <img src="{% static 'images/demo/pattern.png' %}" alt="">#}
-                </div></li>
-                    </ol>
-                </details>
-
-                <details>
-                    <summary>Phase III<br><br> Thereafter, simply ask your question, about business your problems, in natual language/voice, and see if your data can tell a story </summary>
-                    <ol>
-                        <li>Ask questions about your dataset in natural language or speak</li>
-                        <li>In return, you will see a statistically accurate conclusion, and every related visualization backing up that conclusion.<img src="{% static 'images/demo/pval.png' %}" style="background: black; margin: 10px;" alt=""></li>
-                    </ol>
-                </details>
-            </div>
-
 
 
         </div>
@@ -69,6 +47,63 @@
 
 
     </div>
+
+    <script>
+        let slideIndex = 1;
+        let autoSlideInterval;
+        let hasCompletedInitialLoop = false;
+
+        // Show initial slide
+        showSlides(slideIndex);
+
+        // Start automatic sliding on page load
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                if (slideIndex < 3 && !hasCompletedInitialLoop) {
+                    changeSlide(1);
+                } else {
+                    clearInterval(autoSlideInterval);
+                    hasCompletedInitialLoop = true;
+                    currentSlide(1); // Return to first slide
+                }
+            }, 1000);
+        }
+
+        // Start the auto slide when page loads
+        window.onload = startAutoSlide;
+
+        // Manual navigation
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Go to specific slide
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+
+            // Prevent navigation beyond bounds
+            if (n > slides.length) { slideIndex = slides.length }
+            if (n < 1) { slideIndex = 1 }
+
+            // Hide all slides and remove active dot
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active-dot");
+            }
+
+            // Show current slide and activate corresponding dot
+            slides[slideIndex-1].classList.add("active");
+            dots[slideIndex-1].classList.add("active-dot");
+        }
+    </script>
 
 
 

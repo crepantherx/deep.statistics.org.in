@@ -1,66 +1,88 @@
-.steps{
-    display: grid;
-    gap: 8vh;
-}
-
-.demo-head {
+.slideshow-container {
+            width: 40vh;
+            position: relative;
+            margin: 40px auto;
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
     font-family: Inter, sans-serif;
-    font-size: 25px;
-}
+        }
 
-.demo {
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-    color: white;
-    display: grid;
-    grid-auto-flow: row;
-    place-items: center;
-    /*margin: 5px;*/
-}
+        .slide {
+            display: none;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+        }
 
-.demo-tutorial {
-    display: grid;
-    gap: 20px;
-    grid-auto-flow: row;
-    font-family: "Inter", sans-serif;
-    text-align: left;
-    width: 42vw;
-    font-size: 1em;
-}
+        .slide > p {
+            padding: 20px;
+            height: 5vh;
+        }
 
-.demo > img {
-    border: 1px solid white;
-    width: 35vw;
-    border-radius: 5px;
-}
+        .slide.active {
+            display: block;
+        }
 
+        .slide h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            font-family: "Uni Sans Heavy Regular", sans-serif;
+        }
 
-.graphs {
-    display: grid;
-    grid-auto-flow: column;
-    gap: 10px;
-    border: 1px solid white;
-    padding: 5px;
-}
+        .slide p {
+            font-size: 16px;
+        }
 
-.graphs > img {
-    display: grid;
-    width: 10vw;
-    border-radius: 5px;
-}
+        .nav-container {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.pattern img {
-    /*display: grid;*/
-    width: 30vw;
-    /*grid-auto-flow: column;*/
-    height: 50vh;
-}
+        .prev, .next {
+            cursor: pointer;
+            width: auto;
+            padding: 5px;
+            color: #fff;
+            font-size: 18px;
+            transition: 0.6s ease;
+            user-select: none;
+            background-color: transparent;
+        }
 
-#spiralChart {
-    width: 400px !important;
-    height: 400px !important;
-    max-width: none !important; /* Prevent parent constraints */
-    max-height: none !important;
-    display: block;
-    margin: 20px auto;
-}
+        .prev {
+            margin-right: 10px;
+        }
+
+        .next {
+            margin-left: 10px;
+        }
+
+        .prev:hover, .next:hover {
+            color: #ccc;
+        }
+
+        .dots-container {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: #242222;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active-dot {
+            background-color: #ffffff;
+        }
