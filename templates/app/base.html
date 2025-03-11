@@ -75,7 +75,7 @@
 
                 <div style="color: white; font-size: 13px;">
                     {% if request.user.is_authenticated %}
-                        {{ request.user.first_name|capfirst }} {{ request.user.last_name|capfirst }}
+                        {{ request.user.first_name|capfirst }}
                     {% else %}
                         Profile
                     {% endif %}
