@@ -411,3 +411,40 @@ header > nav > div {
     padding-left: 20px;
     padding-right: 20px;
 }
+
+.button-neomorphic {
+    text-decoration: none;
+    font-size: 1rem;
+    color: white;
+    background-color: #000000;
+    font-family: 'Uni Sans Heavy Regular', cursive;
+    padding: 10px 30px 10px 30px;
+    margin: 2em;
+    border-radius: 50px;
+    box-shadow:
+            4px 4px 12px rgba(50, 44, 44, 0.78),
+            -4px -4px 12px rgba(221, 220, 220, 0.37);
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.button-neomorphic:active {
+    text-decoration: none;
+    font-size: 1rem;
+    color: white;
+    background-color: #000000;
+    font-family: 'Uni Sans Heavy Regular', cursive;
+    padding: 10px 30px 10px 30px;
+    margin: 2em;
+    border-radius: 50px;
+    box-shadow:
+            4px 4px 12px rgba(50, 44, 44, 0.78),
+            -4px -4px 12px rgba(221, 220, 220, 0.37);
+
+        border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+}
