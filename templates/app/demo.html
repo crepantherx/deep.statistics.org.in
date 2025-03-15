@@ -12,34 +12,125 @@
         <div id="head">How it works</div>
         <div id="tail">
 
-            <div class="slideshow-container">
-                <div class="slide active">
-                    <h2>Understanding</h2>
-                    <p>We make sure that your data is easily understandable to you by effective visualization</p>
-                </div>
-                <div class="slide">
-                    <h2>Patterns</h2>
-                    <p>Helps you in understanding Anomalies & patterns in your data, based on relation of every column combination</p>
-                </div>
-                <div class="slide">
-                    <h2>Insights</h2>
-                    <p>After that, just ask your business-related questions naturally—whether by speaking or typing—and watch as your data unfolds into a meaningful story</p>
+            <div class="demo" style="place-items: flex-start; width: 70vw;">
+
+                <div style="place-items: flex-start;">
+                    <div class="slideshow-container">
+                    <div class="slide active">
+                        <div class="glowing-text">Step 1<br> Data Understanding</div>
+                                            <div>
+                         <svg width="500" height="167" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background -->
+                        <rect width="500" height="167" fill="black"/>
+
+                        <!-- Geometric Mountain Range (Scaled Down) -->
+                        <path d="M0,167 L83,83 L167,125 L250,62 L333,104 L417,42 L500,146 L500,167 L0,167"
+                              stroke="white" stroke-width="1" fill="none"/>
+                        <!-- Additional Peak Details -->
+                        <path d="M42,167 L62,104 L83,167"
+                              stroke="white" stroke-width="0.5" fill="none"/>
+                        <path d="M208,167 L229,83 L250,167"
+                              stroke="white" stroke-width="0.5" fill="none"/>
+                        <path d="M375,167 L396,62 L417,167"
+                              stroke="white" stroke-width="0.5" fill="none"/>
+                        <!-- Subtle Horizontal Lines for Depth -->
+                        <line x1="0" y1="146" x2="500" y2="146" stroke="white" stroke-width="0.3" opacity="0.3"/>
+                        <line x1="0" y1="125" x2="500" y2="125" stroke="white" stroke-width="0.3" opacity="0.2"/>
+                        </svg>
+                    </div>
+                        <p>We make sure that your data is easily understandable to you by effective visualization</p>
+                    </div>
+                    <div class="slide">
+                        <div class="glowing-text">Step 2<br> Data Patterns</div>
+                         <div>
+        <svg width="500" height="167" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background -->
+            <rect width="500" height="167" fill="black"/>
+
+            <!-- Data Pattern Network -->
+            <!-- Main Horizontal Lines -->
+            <path d="M50,83 L150,83" stroke="white" stroke-width="1" fill="none"/>
+            <path d="M200,125 L300,125" stroke="white" stroke-width="1" fill="none"/>
+            <path d="M350,42 L450,42" stroke="white" stroke-width="1" fill="none"/>
+            <!-- Vertical Connections -->
+            <path d="M50,83 L50,125" stroke="white" stroke-width="0.5" fill="none"/>
+            <path d="M150,83 L150,167" stroke="white" stroke-width="0.5" fill="none"/>
+            <path d="M200,125 L200,42" stroke="white" stroke-width="0.5" fill="none"/>
+            <path d="M300,125 L300,167" stroke="white" stroke-width="0.5" fill="none"/>
+            <path d="M350,42 L350,125" stroke="white" stroke-width="0.5" fill="none"/>
+            <path d="M450,42 L450,83" stroke="white" stroke-width="0.5" fill="none"/>
+            <!-- Diagonal Connections -->
+            <path d="M50,125 L200,42" stroke="white" stroke-width="0.5" fill="none" opacity="0.7"/>
+            <path d="M150,167 L350,125" stroke="white" stroke-width="0.5" fill="none" opacity="0.7"/>
+            <path d="M300,167 L450,83" stroke="white" stroke-width="0.5" fill="none" opacity="0.7"/>
+            <!-- Subtle Grid Lines -->
+            <line x1="0" y1="100" x2="500" y2="100" stroke="white" stroke-width="0.3" opacity="0.3"/>
+            <line x1="0" y1="50" x2="500" y2="50" stroke="white" stroke-width="0.3" opacity="0.2"/>
+        </svg>
+    </div>
+                        <p>Helps you in understanding Anomalies & patterns in your data, based on relation of every column combination</p>
+                    </div>
+                    <div class="slide">
+                        <div class="glowing-text">Step 3<br> Data Insights</div>
+                        <div>
+        <svg width="500" height="167" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background -->
+            <rect width="500" height="167" fill="black"/>
+
+            <!-- Data Grid -->
+            <line x1="50" y1="50" x2="250" y2="50" stroke="white" stroke-width="0.5" opacity="0.3"/>
+            <line x1="50" y1="83" x2="250" y2="83" stroke="white" stroke-width="0.5" opacity="0.3"/>
+            <line x1="50" y1="116" x2="250" y2="116" stroke="white" stroke-width="0.5" opacity="0.3"/>
+            <line x1="50" y1="50" x2="50" y2="116" stroke="white" stroke-width="0.5" opacity="0.3"/>
+            <line x1="100" y1="50" x2="100" y2="116" stroke="white" stroke-width="0.5" opacity="0.3"/>
+            <line x1="150" y1="50" x2="150" y2="116" stroke="white" stroke-width="0.5" opacity="0.3"/>
+            <line x1="200" y1="50" x2="200" y2="116" stroke="white" stroke-width="0.5" opacity="0.3"/>
+            <line x1="250" y1="50" x2="250" y2="116" stroke="white" stroke-width="0.5" opacity="0.3"/>
+
+            <!-- Highlighted Data Point (Insight) -->
+            <circle cx="150" cy="83" r="5" stroke="white" stroke-width="2" fill="none"/>
+            <circle cx="150" cy="83" r="8" stroke="white" stroke-width="1" fill="none" opacity="0.5"/>
+
+            <!-- Magnifying Glass -->
+            <!-- Lens Circle -->
+            <circle cx="300" cy="83" r="40" stroke="white" stroke-width="1" fill="none"/>
+            <!-- Handle -->
+            <line x1="330" y1="113" x2="350" y2="133" stroke="white" stroke-width="1"/>
+            <!-- Lens Focus Line (Pointing to Data Point) -->
+            <line x1="150" y1="83" x2="260" y2="83" stroke="white" stroke-width="0.5" opacity="0.7"/>
+
+            <!-- Subtle Background Lines for Depth -->
+            <line x1="0" y1="145" x2="500" y2="145" stroke="white" stroke-width="0.3" opacity="0.2"/>
+            <line x1="0" y1="25" x2="500" y2="25" stroke="white" stroke-width="0.3" opacity="0.2"/>
+        </svg>
+    </div>
+                        <p>After that, just ask your business-related questions naturally—whether by speaking or typing—and watch as your data unfolds into a meaningful story</p>
+                    </div>
+
+                    <div class="nav-container">
+                        <a class="prev" onclick="changeSlide(-1)">❮</a>
+                        <div class="dots-container">
+                            <span class="dot active-dot" onclick="currentSlide(1)"></span>
+                            <span class="dot" onclick="currentSlide(2)"></span>
+                            <span class="dot" onclick="currentSlide(3)"></span>
+                        </div>
+                        <a class="next" onclick="changeSlide(1)">❯</a>
+                    </div>
                 </div>
 
-                <div class="nav-container">
-                    <a class="prev" onclick="changeSlide(-1)">❮</a>
-                    <div class="dots-container">
-                        <span class="dot active-dot" onclick="currentSlide(1)"></span>
-                        <span class="dot" onclick="currentSlide(2)"></span>
-                        <span class="dot" onclick="currentSlide(3)"></span>
-                    </div>
-                    <a class="next" onclick="changeSlide(1)">❯</a>
+                    <a href="{% url 'login' %}">
+                            <button class="neomorphic-button">Demo</button>
+                    </a>
                 </div>
+
+                <div style="place-self: center; place-items: center">
+<!--                    <img src="{% static 'images/art/hero.png'%}" alt="" style="width: 30vh;">-->
+
+                </div>
+
+
             </div>
 
-            <a href="{% url 'login' %}">
-                    <button class="neomorphic-button">Demo</button>
-            </a>
 
 
         </div>
@@ -48,63 +139,73 @@
 
     </div>
 
-    <script>
-        let slideIndex = 1;
-        let autoSlideInterval;
-        let hasCompletedInitialLoop = false;
 
-        // Show initial slide
+<script>
+    let slideIndex = 1;
+    let autoSlideInterval;
+    let userInteracted = false; // Track if user has interacted
+
+    // Show initial slide
+    showSlides(slideIndex);
+
+    // Start automatic sliding on page load
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+            if (!userInteracted) { // Only auto-slide if the user hasn't interacted
+                changeSlide(1, false); // Move to next slide without stopping
+            }
+        }, 1000);
+    }
+
+    // Stop auto-sliding when user interacts
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+        userInteracted = true;
+    }
+
+    // Start auto-slide when the page loads
+    window.onload = startAutoSlide;
+
+    // Manual navigation (stops auto-slide)
+    function changeSlide(n, stop = true) {
+        if (stop) stopAutoSlide(); // Only stop if user clicks
+        slideIndex += n;
+
+        let slides = document.getElementsByClassName("slide");
+
+        if (slideIndex > slides.length) {
+            slideIndex = 1; // Loop back to first slide
+        }
+        if (slideIndex < 1) {
+            slideIndex = slides.length; // Loop back to last slide
+        }
         showSlides(slideIndex);
+    }
 
-        // Start automatic sliding on page load
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(() => {
-                if (slideIndex < 3 && !hasCompletedInitialLoop) {
-                    changeSlide(1);
-                } else {
-                    clearInterval(autoSlideInterval);
-                    hasCompletedInitialLoop = true;
-                    currentSlide(1); // Return to first slide
-                }
-            }, 1000);
+    // Go to a specific slide (stops auto-slide)
+    function currentSlide(n) {
+        stopAutoSlide();
+        slideIndex = n;
+        showSlides(slideIndex);
+    }
+
+    function showSlides(n) {
+        let slides = document.getElementsByClassName("slide");
+        let dots = document.getElementsByClassName("dot");
+
+        // Hide all slides and remove active dot
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].classList.remove("active");
+        }
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].classList.remove("active-dot");
         }
 
-        // Start the auto slide when page loads
-        window.onload = startAutoSlide;
-
-        // Manual navigation
-        function changeSlide(n) {
-            showSlides(slideIndex += n);
-        }
-
-        // Go to specific slide
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("slide");
-            let dots = document.getElementsByClassName("dot");
-
-            // Prevent navigation beyond bounds
-            if (n > slides.length) { slideIndex = slides.length }
-            if (n < 1) { slideIndex = 1 }
-
-            // Hide all slides and remove active dot
-            for (i = 0; i < slides.length; i++) {
-                slides[i].classList.remove("active");
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].classList.remove("active-dot");
-            }
-
-            // Show current slide and activate corresponding dot
-            slides[slideIndex-1].classList.add("active");
-            dots[slideIndex-1].classList.add("active-dot");
-        }
-    </script>
-
+        // Show current slide and activate corresponding dot
+        slides[n - 1].classList.add("active");
+        dots[n - 1].classList.add("active-dot");
+    }
+</script>
 
 
 {% endblock %}

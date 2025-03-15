@@ -1,5 +1,5 @@
 .slideshow-container {
-            width: 40vh;
+            /*width: 40vh;*/
             position: relative;
             margin: 40px auto;
             background-color: #000;
@@ -11,13 +11,15 @@
         .slide {
             display: none;
             width: 100%;
-            text-align: center;
+            text-align: left;
             box-sizing: border-box;
         }
 
         .slide > p {
-            padding: 20px;
-            height: 5vh;
+            /*padding: 20px;*/
+            /*height: 5vh;*/
+            width: 35vh;
+            min-height: 10vh;
         }
 
         .slide.active {
@@ -37,8 +39,8 @@
         .nav-container {
             position: absolute;
             bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
+            /*left: 50%;*/
+            /*transform: translateX(-50%);*/
             display: flex;
             align-items: center;
             justify-content: center;
@@ -86,3 +88,33 @@
         .active-dot {
             background-color: #ffffff;
         }
+.glowing-text {
+    position: relative;
+    color: #fff;
+      font-family: "Uni Sans Heavy Regular", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+    font-size: 2rem;
+    letter-spacing: 2px;
+    text-align: left;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 1),
+                 0 0 40px rgba(255, 255, 255, 0.8),
+                 0 0 80px rgba(255, 255, 255, 0.6);
+}
+
+.demo {
+    display: flex;
+    place-items: stretch;
+    place-content: space-around;
+
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .demo {
+            display: flex;
+            flex-direction: column-reverse;
+    }
+}
