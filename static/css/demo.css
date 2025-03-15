@@ -105,9 +105,9 @@
 
 .demo {
     display: flex;
-    place-items: stretch;
-    place-content: space-around;
-
+    place-items: flex-start;
+    place-content: space-between;
+width: 70vw
 }
 
 
