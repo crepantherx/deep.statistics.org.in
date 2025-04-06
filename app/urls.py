@@ -18,7 +18,7 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('profile/', views.profile_view, name='profile'),
     path('pricing/', views.pricing, name='pricing'),
-    path('chart/', views.chart, name='chart'),
+    # path('chart/', views.chart, name='chart'),
     # path('upload-csv/', views.upload_csv_view, name='upload_csv'),
 
 ]
