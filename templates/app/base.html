@@ -38,8 +38,8 @@
                             <li><a href="{% url 'home' %}">Home</a></li>
                             <li><a href="{% url 'services' %}">Services</a></li>
                             {% if request.user.is_authenticated %}
-{#                            <li><a href="{% url 'upload_csv' %}">Demo</a></li>#}
-                                <li><a href="https://app.statistics.org.in">Demo</a></li>
+                            <li><a href="{% url 'home' %}">Demo</a></li>
+{#                                <li><a href="https://app.statistics.org.in">Demo</a></li>#}
                             {% endif %}
                             <li><a href="mailto:business@statistics.org.in?subject=Contact%20Deep%20Statistics">Contact Us</a></li>
                         </ul>

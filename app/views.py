@@ -31,8 +31,8 @@ def login_view(request):
             user = form.get_user()
             login(request, user)
             messages.success(request, 'Logged in successfully!')
-            # return redirect('upload_csv')
-            return HttpResponseRedirect('https://app.statistics.org.in')
+            return redirect('home')
+            # return HttpResponseRedirect('https://app.statistics.org.in')
         else:
             # Handle unsuccessful login by adding an error message
             messages.error(request, 'Invalid username or password.')
