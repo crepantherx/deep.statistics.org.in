@@ -70,7 +70,7 @@ header {
 }
 
 header > nav {
-    width: 70vw;
+    width: 95vw;
     display: grid;
     place-items: center;
     place-content: space-between;
@@ -319,7 +319,7 @@ footer > section {
 
 footer > nav {
     border-top: 1px solid #252424;
-    width: 70vw;
+    width: 95vw;
     display: grid;
     grid-auto-flow: column;
     place-items: center;
