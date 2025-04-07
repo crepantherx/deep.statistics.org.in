@@ -150,17 +150,31 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = 'app.CustomUser'
 
 # Add these at the bottom
-LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = 'https://deep.statistics.org.in/login/'
+LOGIN_REDIRECT_URL = 'https://app.deep.statistics.org.in'
+LOGOUT_REDIRECT_URL = 'https://deep.statistics.org.in/login/'
 
+CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
-    "https://app.deep.statistics.org.in",
+    "http://localhost:5173",
     "https://app.deep.statistics.org.in",
 ]
 
-CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:5173",
+    "https://app.deep.statistics.org.in",
+    "https://deep.statistics.org.in",
+]
 
+SESSION_COOKIE_DOMAIN = '.deep.statistics.org.in' if not DEBUG else None
+CSRF_COOKIE_DOMAIN = '.deep.statistics.org.in' if not DEBUG else None
+SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_NAME = 'sessionid'
+
+# Add CORS middleware settings
 CORS_ALLOW_METHODS = [
     'DELETE',
     'GET',
@@ -181,13 +195,3 @@ CORS_ALLOW_HEADERS = [
     'x-csrftoken',
     'x-requested-with',
 ]
-
-CSRF_TRUSTED_ORIGINS = [
-    "https://app.deep.statistics.org.in",
-]
-
-SESSION_COOKIE_SAMESITE = 'None'
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SAMESITE = 'None'
-CSRF_COOKIE_SECURE = True
-CSRF_COOKIE_HTTPONLY = False  # Allow JavaScript to access the CSRF token

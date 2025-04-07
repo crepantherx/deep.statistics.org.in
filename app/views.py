@@ -27,26 +27,27 @@ from django.http import HttpResponseRedirect
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(data=request.POST)
-        if form.is_valid():  # This is where if form.is_valid(): belongs
+        if form.is_valid():
             user = form.get_user()
             login(request, user)
+            request.session.save()  # Explicitly save the session
             messages.success(request, 'Logged in successfully!')
-            # return redirect('home')
+            if settings.DEBUG:
+                return HttpResponseRedirect('http://localhost:5173')
             return HttpResponseRedirect('https://app.deep.statistics.org.in')
         else:
-            # Handle unsuccessful login by adding an error message
             messages.error(request, 'Invalid username or password.')
     else:
-        # For GET requests, display an empty form
         form = LoginForm()
     return render(request, 'app/login.html', {'form': form})
 
 def logout_view(request):
     logout(request)
-    # Clear any existing messages before adding the new one
-    messages.get_messages(request).used = True  # Mark existing messages as used
+    request.session.flush()  # Clear the session completely
     messages.success(request, 'Logged out successfully!')
-    return redirect('login')
+    if settings.DEBUG:
+        return HttpResponseRedirect('http://localhost:5173/login')
+    return HttpResponseRedirect('https://deep.statistics.org.in/login/')
 
 def profile_view(request):
     return render(request, 'app/profile.html')
@@ -200,39 +201,33 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.middleware.csrf import get_token
+from django.views.decorators.http import require_http_methods
 
 @ensure_csrf_cookie
 @csrf_exempt
-def check_auth(request):
-    print(f"Check auth request received")
+@require_http_methods(['GET'])
+def auth_check(request):
+    print("Check auth request received")
     print(f"Session ID: {request.session.session_key}")
     print(f"Is authenticated: {request.user.is_authenticated}")
     
-    # Get CSRF token
-    csrf_token = get_token(request)
-    
     if request.user.is_authenticated:
         print(f"User authenticated: {request.user.username}")
-        print(f"First name: {request.user.first_name}")
-        print(f"Last name: {request.user.last_name}")
-        response = JsonResponse({
+        return JsonResponse({
             'user': {
                 'username': request.user.username,
-                'first_name': request.user.first_name,
-                'last_name': request.user.last_name,
                 'email': request.user.email
             }
         })
-        response["Access-Control-Allow-Credentials"] = "true"
-        response["Access-Control-Allow-Origin"] = "https://app.deep.statistics.org.in"
-        response["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
-        response["Access-Control-Allow-Headers"] = "X-CSRFToken, Content-Type"
-        return response
-    
-    print("User not authenticated")
-    response = JsonResponse({'user': None}, status=401)
-    response["Access-Control-Allow-Credentials"] = "true"
-    response["Access-Control-Allow-Origin"] = "https://app.deep.statistics.org.in"
-    response["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
-    response["Access-Control-Allow-Headers"] = "X-CSRFToken, Content-Type"
-    return response
+    else:
+        print("User not authenticated")
+        return JsonResponse({'error': 'Unauthorized'}, status=401)
+
+@require_http_methods(['POST'])
+def logout_view(request):
+    logout(request)
+    request.session.flush()  # Clear the session completely
+    messages.success(request, 'Logged out successfully!')
+    if settings.DEBUG:
+        return HttpResponseRedirect('http://localhost:5173/login')
+    return HttpResponseRedirect('https://deep.statistics.org.in/login/')
