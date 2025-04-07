@@ -1,19 +1,14 @@
+from django.shortcuts import render
+
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
-from django.http import HttpResponseRedirect, JsonResponse, HttpResponseNotFound, HttpResponseServerError
-from django.conf import settings
-from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
-from django.views.decorators.http import require_http_methods
-from django.middleware.csrf import get_token
 from .forms import RegistrationForm, LoginForm
 
-import logging
-import json
-import csv
-import os
-
-logger = logging.getLogger(__name__)
+from django.shortcuts import render, redirect
+from django.contrib.auth import login
+from django.contrib import messages
+from .forms import RegistrationForm
 
 def register_view(request):
     if request.method == 'POST':
@@ -29,49 +24,29 @@ def register_view(request):
     return render(request, 'app/register.html', {'form': form})
 
 from django.http import HttpResponseRedirect
-from django.conf import settings
-
-import logging
-
-logger = logging.getLogger(__name__)
-
 def login_view(request):
-    try:
-        if request.method == 'POST':
-            form = LoginForm(data=request.POST)
-            if form.is_valid():
-                user = form.get_user()
-                login(request, user)
-                request.session.save()
-                messages.success(request, 'Logged in successfully!')
-                
-                frontend_url = settings.FRONTEND_URL
-                logger.info(f"Redirecting to frontend: {frontend_url}")
-                return HttpResponseRedirect(frontend_url)
-            else:
-                messages.error(request, 'Invalid username or password.')
-                logger.warning("Invalid login attempt")
+    if request.method == 'POST':
+        form = LoginForm(data=request.POST)
+        if form.is_valid():  # This is where if form.is_valid(): belongs
+            user = form.get_user()
+            login(request, user)
+            messages.success(request, 'Logged in successfully!')
+            # return redirect('home')
+            return HttpResponseRedirect('https://app.statistics.org.in')
         else:
-            form = LoginForm()
-        return render(request, 'app/login.html', {'form': form})
-    except Exception as e:
-        logger.error(f"Error in login_view: {str(e)}")
-        messages.error(request, 'An error occurred during login.')
-        return render(request, 'app/login.html', {'form': LoginForm()})
+            # Handle unsuccessful login by adding an error message
+            messages.error(request, 'Invalid username or password.')
+    else:
+        # For GET requests, display an empty form
+        form = LoginForm()
+    return render(request, 'app/login.html', {'form': form})
 
-@require_http_methods(['POST'])
 def logout_view(request):
-    try:
-        logout(request)
-        request.session.flush()
-        messages.success(request, 'Logged out successfully!')
-        
-        login_url = settings.LOGIN_URL
-        logger.info(f"Redirecting to login: {login_url}")
-        return HttpResponseRedirect(login_url)
-    except Exception as e:
-        logger.error(f"Error in logout_view: {str(e)}")
-        return JsonResponse({'error': 'Internal server error'}, status=500)
+    logout(request)
+    # Clear any existing messages before adding the new one
+    messages.get_messages(request).used = True  # Mark existing messages as used
+    messages.success(request, 'Logged out successfully!')
+    return redirect('login')
 
 def profile_view(request):
     return render(request, 'app/profile.html')
@@ -219,43 +194,3 @@ from .forms import CSVUploadForm
 #     else:
 #         form = CSVUploadForm()
 #     return render(request, 'app/upload_csv.html', {'form': form})
-
-from django.http import JsonResponse
-from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.csrf import ensure_csrf_cookie
-from django.middleware.csrf import get_token
-from django.views.decorators.http import require_http_methods
-
-@ensure_csrf_cookie
-@csrf_exempt
-@require_http_methods(['GET'])
-def auth_check(request):
-    try:
-        logger.info("Auth check request received")
-        logger.info(f"Session ID: {request.session.session_key}")
-        logger.info(f"Is authenticated: {request.user.is_authenticated}")
-        
-        if request.user.is_authenticated:
-            logger.info(f"User authenticated: {request.user.username}")
-            return JsonResponse({
-                'user': {
-                    'username': request.user.username,
-                    'email': request.user.email
-                }
-            })
-        else:
-            logger.warning("User not authenticated")
-            return JsonResponse({'error': 'Unauthorized'}, status=401)
-    except Exception as e:
-        logger.error(f"Error in auth_check: {str(e)}")
-        return JsonResponse({'error': 'Internal server error'}, status=500)
-
-@require_http_methods(['POST'])
-def logout_view(request):
-    logout(request)
-    request.session.flush()  # Clear the session completely
-    messages.success(request, 'Logged out successfully!')
-    if settings.DEBUG:
-        return HttpResponseRedirect('http://localhost:5173/login')
-    return HttpResponseRedirect('https://deep.statistics.org.in/login/')
