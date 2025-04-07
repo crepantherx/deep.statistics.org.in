@@ -1,14 +1,19 @@
-from django.shortcuts import render
-
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
+from django.http import HttpResponseRedirect, JsonResponse, HttpResponseNotFound, HttpResponseServerError
+from django.conf import settings
+from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
+from django.views.decorators.http import require_http_methods
+from django.middleware.csrf import get_token
 from .forms import RegistrationForm, LoginForm
 
-from django.shortcuts import render, redirect
-from django.contrib.auth import login
-from django.contrib import messages
-from .forms import RegistrationForm
+import logging
+import json
+import csv
+import os
+
+logger = logging.getLogger(__name__)
 
 def register_view(request):
     if request.method == 'POST':
@@ -26,40 +31,47 @@ def register_view(request):
 from django.http import HttpResponseRedirect
 from django.conf import settings
 
-def login_view(request):
-    if request.method == 'POST':
-        form = LoginForm(data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            request.session.save()  # Explicitly save the session
-            messages.success(request, 'Logged in successfully!')
-            
-            # Determine frontend URL based on environment
-            frontend_url = (
-                'http://localhost:5173' 
-                if settings.DEBUG 
-                else 'https://app.deep.statistics.org.in'
-            )
-            return HttpResponseRedirect(frontend_url)
-        else:
-            messages.error(request, 'Invalid username or password.')
-    else:
-        form = LoginForm()
-    return render(request, 'app/login.html', {'form': form})
+import logging
 
+logger = logging.getLogger(__name__)
+
+def login_view(request):
+    try:
+        if request.method == 'POST':
+            form = LoginForm(data=request.POST)
+            if form.is_valid():
+                user = form.get_user()
+                login(request, user)
+                request.session.save()
+                messages.success(request, 'Logged in successfully!')
+                
+                frontend_url = settings.FRONTEND_URL
+                logger.info(f"Redirecting to frontend: {frontend_url}")
+                return HttpResponseRedirect(frontend_url)
+            else:
+                messages.error(request, 'Invalid username or password.')
+                logger.warning("Invalid login attempt")
+        else:
+            form = LoginForm()
+        return render(request, 'app/login.html', {'form': form})
+    except Exception as e:
+        logger.error(f"Error in login_view: {str(e)}")
+        messages.error(request, 'An error occurred during login.')
+        return render(request, 'app/login.html', {'form': LoginForm()})
+
+@require_http_methods(['POST'])
 def logout_view(request):
-    logout(request)
-    request.session.flush()
-    messages.success(request, 'Logged out successfully!')
-    
-    # Determine login URL based on environment
-    login_url = (
-        'http://localhost:5173/login' 
-        if settings.DEBUG 
-        else 'https://deep.statistics.org.in/login/'
-    )
-    return HttpResponseRedirect(login_url)
+    try:
+        logout(request)
+        request.session.flush()
+        messages.success(request, 'Logged out successfully!')
+        
+        login_url = settings.LOGIN_URL
+        logger.info(f"Redirecting to login: {login_url}")
+        return HttpResponseRedirect(login_url)
+    except Exception as e:
+        logger.error(f"Error in logout_view: {str(e)}")
+        return JsonResponse({'error': 'Internal server error'}, status=500)
 
 def profile_view(request):
     return render(request, 'app/profile.html')
@@ -219,21 +231,25 @@ from django.views.decorators.http import require_http_methods
 @csrf_exempt
 @require_http_methods(['GET'])
 def auth_check(request):
-    print("Check auth request received")
-    print(f"Session ID: {request.session.session_key}")
-    print(f"Is authenticated: {request.user.is_authenticated}")
-    
-    if request.user.is_authenticated:
-        print(f"User authenticated: {request.user.username}")
-        return JsonResponse({
-            'user': {
-                'username': request.user.username,
-                'email': request.user.email
-            }
-        })
-    else:
-        print("User not authenticated")
-        return JsonResponse({'error': 'Unauthorized'}, status=401)
+    try:
+        logger.info("Auth check request received")
+        logger.info(f"Session ID: {request.session.session_key}")
+        logger.info(f"Is authenticated: {request.user.is_authenticated}")
+        
+        if request.user.is_authenticated:
+            logger.info(f"User authenticated: {request.user.username}")
+            return JsonResponse({
+                'user': {
+                    'username': request.user.username,
+                    'email': request.user.email
+                }
+            })
+        else:
+            logger.warning("User not authenticated")
+            return JsonResponse({'error': 'Unauthorized'}, status=401)
+    except Exception as e:
+        logger.error(f"Error in auth_check: {str(e)}")
+        return JsonResponse({'error': 'Internal server error'}, status=500)
 
 @require_http_methods(['POST'])
 def logout_view(request):

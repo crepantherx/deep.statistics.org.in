@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-tc^xhresn-grikz9-a33mjc7ve#2zdpz=w&nux*#^6tncj&=4q"
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-tc^xhresn-grikz9-a33mjc7ve#2zdpz=w&nux*#^6tncj&=4q')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_ENV') == 'development'
@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'deep.statistics.org.in',
     'app.deep.statistics.org.in',
+    '.deep.statistics.org.in',  # Allow all subdomains
 ]
 
 # Application definition
@@ -46,15 +47,15 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",  # Move CORS middleware to top
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware"
 ]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
@@ -92,11 +93,11 @@ WSGI_APPLICATION = "api.wsgi.app"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres.zzqjabervzvjzduonmas',
-        'PASSWORD': '#lp@SQLe1024',
-        'HOST': 'aws-0-ap-south-1.pooler.supabase.com',
-        'PORT': '6543',
+        'NAME': os.environ.get('DB_NAME', 'postgres'),
+        'USER': os.environ.get('DB_USER', 'postgres.zzqjabervzvjzduonmas'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', '#lp@SQLe1024'),
+        'HOST': os.environ.get('DB_HOST', 'aws-0-ap-south-1.pooler.supabase.com'),
+        'PORT': os.environ.get('DB_PORT', '6543'),
     }
 }
 
@@ -143,8 +144,8 @@ USE_TZ = True
 # STATIC_URL = '/staticfiles/'
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'app/static')]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
-STATIC_URL = '/staticfiles/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Default primary key field type
@@ -156,9 +157,28 @@ AUTH_USER_MODEL = 'app.CustomUser'
 
 # Frontend URLs
 FRONTEND_URL = 'http://localhost:5173' if DEBUG else 'https://app.deep.statistics.org.in'
+LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = FRONTEND_URL
-LOGOUT_REDIRECT_URL = f"{FRONTEND_URL}/login"
+LOGOUT_REDIRECT_URL = '/login/'
 
+# Security settings
+SECURE_SSL_REDIRECT = not DEBUG
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+# Session and CSRF settings
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_HTTPONLY = True
+CSRF_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_DOMAIN = '.deep.statistics.org.in' if not DEBUG else None
+CSRF_COOKIE_DOMAIN = '.deep.statistics.org.in' if not DEBUG else None
+
+# CORS settings
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
@@ -170,14 +190,6 @@ CSRF_TRUSTED_ORIGINS = [
     "https://app.deep.statistics.org.in",
     "https://deep.statistics.org.in",
 ]
-
-SESSION_COOKIE_DOMAIN = '.deep.statistics.org.in' if not DEBUG else None
-CSRF_COOKIE_DOMAIN = '.deep.statistics.org.in' if not DEBUG else None
-SESSION_COOKIE_SAMESITE = 'Lax'
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-CSRF_COOKIE_SAMESITE = 'Lax'
-SESSION_COOKIE_NAME = 'sessionid'
 
 # Add CORS middleware settings
 CORS_ALLOW_METHODS = [
