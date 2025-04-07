@@ -23,9 +23,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-tc^xhresn-grikz9-a33mjc7ve#2zdpz=w&nux*#^6tncj&=4q"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_ENV') == 'development'
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', 'localhost', 'testing.statistics.org.in', 'deep.statistics.org.in']
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'deep.statistics.org.in',
+    'app.deep.statistics.org.in',
+]
 
 # Application definition
 
@@ -149,10 +154,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'app.CustomUser'
 
-# Add these at the bottom
-LOGIN_URL = 'https://deep.statistics.org.in/login/'
-LOGIN_REDIRECT_URL = 'https://app.deep.statistics.org.in'
-LOGOUT_REDIRECT_URL = 'https://deep.statistics.org.in/login/'
+# Frontend URLs
+FRONTEND_URL = 'http://localhost:5173' if DEBUG else 'https://app.deep.statistics.org.in'
+LOGIN_REDIRECT_URL = FRONTEND_URL
+LOGOUT_REDIRECT_URL = f"{FRONTEND_URL}/login"
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
