@@ -194,3 +194,45 @@ from .forms import CSVUploadForm
 #     else:
 #         form = CSVUploadForm()
 #     return render(request, 'app/upload_csv.html', {'form': form})
+
+from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import ensure_csrf_cookie
+from django.middleware.csrf import get_token
+
+@ensure_csrf_cookie
+@csrf_exempt
+def check_auth(request):
+    print(f"Check auth request received")
+    print(f"Session ID: {request.session.session_key}")
+    print(f"Is authenticated: {request.user.is_authenticated}")
+    
+    # Get CSRF token
+    csrf_token = get_token(request)
+    
+    if request.user.is_authenticated:
+        print(f"User authenticated: {request.user.username}")
+        print(f"First name: {request.user.first_name}")
+        print(f"Last name: {request.user.last_name}")
+        response = JsonResponse({
+            'user': {
+                'username': request.user.username,
+                'first_name': request.user.first_name,
+                'last_name': request.user.last_name,
+                'email': request.user.email
+            }
+        })
+        response["Access-Control-Allow-Credentials"] = "true"
+        response["Access-Control-Allow-Origin"] = "https://app.deep.statistics.org.in"
+        response["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+        response["Access-Control-Allow-Headers"] = "X-CSRFToken, Content-Type"
+        return response
+    
+    print("User not authenticated")
+    response = JsonResponse({'user': None}, status=401)
+    response["Access-Control-Allow-Credentials"] = "true"
+    response["Access-Control-Allow-Origin"] = "https://app.deep.statistics.org.in"
+    response["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    response["Access-Control-Allow-Headers"] = "X-CSRFToken, Content-Type"
+    return response
