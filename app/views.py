@@ -24,6 +24,8 @@ def register_view(request):
     return render(request, 'app/register.html', {'form': form})
 
 from django.http import HttpResponseRedirect
+from django.conf import settings
+
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(data=request.POST)
@@ -32,9 +34,14 @@ def login_view(request):
             login(request, user)
             request.session.save()  # Explicitly save the session
             messages.success(request, 'Logged in successfully!')
-            if settings.DEBUG:
-                return HttpResponseRedirect('http://localhost:5173')
-            return HttpResponseRedirect('https://app.deep.statistics.org.in')
+            
+            # Determine frontend URL based on environment
+            frontend_url = (
+                'http://localhost:5173' 
+                if settings.DEBUG 
+                else 'https://app.deep.statistics.org.in'
+            )
+            return HttpResponseRedirect(frontend_url)
         else:
             messages.error(request, 'Invalid username or password.')
     else:
@@ -43,11 +50,16 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    request.session.flush()  # Clear the session completely
+    request.session.flush()
     messages.success(request, 'Logged out successfully!')
-    if settings.DEBUG:
-        return HttpResponseRedirect('http://localhost:5173/login')
-    return HttpResponseRedirect('https://deep.statistics.org.in/login/')
+    
+    # Determine login URL based on environment
+    login_url = (
+        'http://localhost:5173/login' 
+        if settings.DEBUG 
+        else 'https://deep.statistics.org.in/login/'
+    )
+    return HttpResponseRedirect(login_url)
 
 def profile_view(request):
     return render(request, 'app/profile.html')
