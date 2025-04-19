@@ -32,7 +32,7 @@ def login_view(request):
             login(request, user)
             messages.success(request, 'Logged in successfully!')
             # return redirect('home')
-            return HttpResponseRedirect('https://app.deep.statistics.org.in')
+            return HttpResponseRedirect('https://app.statistics.org.in')
         else:
             # Handle unsuccessful login by adding an error message
             messages.error(request, 'Invalid username or password.')
