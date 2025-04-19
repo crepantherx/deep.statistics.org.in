@@ -10,5 +10,9 @@
       "use": "@vercel/python",
       "config": { "runtime": "python-3.11" }
     }
+  ],
+  "routes": [
+    { "src": "/static/(.*)", "dest": "/static/$1" },
+    { "src": "/(.*)", "dest": "api/wsgi.py" }
   ]
 }
