@@ -1,31 +1,19 @@
-alert('Script is loading');
-
 // Function to initialize the menu functionality
 function initializeMenu() {
-    alert('Trying to initialize menu');
-    
     // Get elements
     const profileButton = document.getElementById('profile-button');
     const profileMenu = document.getElementById('profile-menu');
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobile-nav');
 
-    // Debug what elements were found
-    alert('Found elements: ' + 
-          '\nprofileButton: ' + (profileButton ? 'yes' : 'no') +
-          '\nprofileMenu: ' + (profileMenu ? 'yes' : 'no') +
-          '\nhamburger: ' + (hamburger ? 'yes' : 'no') +
-          '\nmobileNav: ' + (mobileNav ? 'yes' : 'no'));
-
     // Only proceed if we have the necessary elements
     if (!profileButton || !profileMenu) {
-        alert('Required elements not found!');
+        console.log('Required elements not found');
         return;
     }
 
     // Set up profile button click handler
     profileButton.onclick = function(e) {
-        alert('Profile button clicked');
         e.preventDefault();
         e.stopPropagation();
         profileMenu.classList.toggle('active');
@@ -59,7 +47,7 @@ function initializeMenu() {
     };
 }
 
-// Try different ways to ensure the script runs after DOM is ready
+// Initialize when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeMenu);
 } else {
