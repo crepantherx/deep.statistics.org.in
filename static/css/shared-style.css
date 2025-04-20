@@ -627,7 +627,7 @@ header > nav > div {
     background-color: #000000;
     font-family: 'Uni Sans Heavy Regular', cursive;
     padding: 10px 30px 10px 30px;
-    margin: 2em;
+    margin: 1em;
     border-radius: 50px;
     box-shadow:
             4px 4px 12px rgba(50, 44, 44, 0.78),
@@ -645,7 +645,7 @@ header > nav > div {
     background-color: #000000;
     font-family: 'Uni Sans Heavy Regular', cursive;
     padding: 10px 30px 10px 30px;
-    margin: 2em;
+    margin: 1em;
     border-radius: 50px;
     box-shadow:
             4px 4px 12px rgba(50, 44, 44, 0.78),
