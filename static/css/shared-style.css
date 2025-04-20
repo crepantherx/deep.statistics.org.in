@@ -129,20 +129,23 @@ header {
 }
 
 .profile-container {
-    z-index: 100;
+    position: relative;
+    z-index: 1001;
     background: none;
     border: none;
     cursor: pointer;
     padding: 0.5rem;
     display: flex;
     align-items: center;
+    pointer-events: auto;
 }
 
 .profile-icon {
     width: 25px;
     height: 25px;
     fill: white;
-    background: #000000;
+    background: transparent;
+    pointer-events: none;
 }
 
 .app-button {
@@ -238,8 +241,9 @@ header {
     padding: 1rem 0;
     min-width: 280px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    z-index: 1000;
+    z-index: 1001;
     flex-direction: column;
+    pointer-events: auto;
 }
 
 .profile-info {

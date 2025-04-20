@@ -13,13 +13,23 @@
     <link rel="preload" href="{% static 'fonts/adelia.ttf' %}" as="font" type="font/ttf" crossorigin="anonymous">
     <link rel="preload" href="https://db.onlinewebfonts.com/t/4bdc5c5c2b7a174ab043093775360d9e.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="https://db.onlinewebfonts.com/t/4f6fb2fa3c231278167b36e966718cbb.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/shared-style.css' %}">
 
-
     {% block styles %}{% endblock %}
+    
+    <!-- Move script to head with type="module" -->
+    <script type="module">
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', function() {
+            const script = document.createElement('script');
+            script.src = "{% static 'js/script.js' %}";
+            script.type = 'text/javascript';
+            document.head.appendChild(script);
+        });
+    </script>
 </head>
 
 <body>
@@ -41,7 +51,7 @@
                 {% if request.user.is_authenticated %}
                     <a href="https://app.deep.statistics.org.in" class="app-link">APP</a>
                 {% endif %}
-                <button class="profile-container" id="profile-button">
+                <button class="profile-container" id="profile-button" onclick="toggleProfileMenu(event)">
                     <svg class="profile-icon" viewBox="0 0 24 24">
                         <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/>
                     </svg>
@@ -51,7 +61,7 @@
                 {% endif %}
             </div>
 
-            <button class="hamburger" id="hamburger">
+            <button class="hamburger" id="hamburger" onclick="toggleMobileMenu(event)">
                 <span class="line"></span>
                 <span class="line"></span>
                 <span class="line"></span>
@@ -71,7 +81,7 @@
             {% endif %}
         </div>
 
-        <div class="profile-menu" id="profile-menu">
+        <div class="profile-menu" id="profile-menu" onclick="handleMenuClick(event)">
             {% if request.user.is_authenticated %}
                 <div class="profile-info">
                     <div class="user-name">{{ request.user.first_name|upper }} {{ request.user.last_name|upper }}</div>
@@ -112,8 +122,59 @@
         </nav>
     </footer>
 
-    <script src="{% static 'js/script.js' %}"></script>
     {% block scripts %}{% endblock %}
+
+    <script>
+        // Function to toggle profile menu
+        function toggleProfileMenu(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            const profileMenu = document.getElementById('profile-menu');
+            const mobileNav = document.getElementById('mobile-nav');
+            const hamburger = document.getElementById('hamburger');
+            
+            // Toggle profile menu
+            profileMenu.classList.toggle('active');
+            
+            // Close mobile menu if open
+            mobileNav.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+
+        // Function to toggle mobile menu
+        function toggleMobileMenu(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            const mobileNav = document.getElementById('mobile-nav');
+            const hamburger = document.getElementById('hamburger');
+            const profileMenu = document.getElementById('profile-menu');
+            
+            // Toggle mobile menu
+            mobileNav.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            
+            // Close profile menu if open
+            profileMenu.classList.remove('active');
+        }
+
+        // Function to handle clicks inside the menu
+        function handleMenuClick(event) {
+            event.stopPropagation();
+        }
+
+        // Close menus when clicking outside
+        document.addEventListener('click', function() {
+            const profileMenu = document.getElementById('profile-menu');
+            const mobileNav = document.getElementById('mobile-nav');
+            const hamburger = document.getElementById('hamburger');
+            
+            profileMenu.classList.remove('active');
+            mobileNav.classList.remove('active');
+            hamburger.classList.remove('active');
+        });
+    </script>
 
 </body>
 </html>
