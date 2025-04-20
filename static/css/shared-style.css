@@ -113,7 +113,6 @@ header {
 .nav-links a.active {
     color: #ffffff;
     position: relative;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
     font-weight: 600;
 }
 
@@ -125,20 +124,6 @@ header {
     width: 100%;
     height: 2px;
     background-color: #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-    }
-    50% {
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-    }
-    100% {
-        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-    }
 }
 
 .nav-right {
@@ -281,10 +266,8 @@ header {
 .mobile-nav a.active {
     background-color: rgba(255, 255, 255, 0.15);
     color: #ffffff;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
     font-weight: 600;
     border-left: 3px solid #ffffff;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
 .profile-menu {
