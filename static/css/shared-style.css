@@ -122,9 +122,24 @@ header {
     font-weight: 500;
     font-family: 'Uni Sans Heavy Regular', 'Uni Sans', sans-serif;
     transition: color 0.3s ease;
+    margin-right: 0.5rem;
 }
 
 .app-link:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.login-button {
+    color: white;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: 'Uni Sans Heavy Regular', 'Uni Sans', sans-serif;
+    transition: color 0.3s ease;
+    margin-right: 0.5rem;
+}
+
+.login-button:hover {
     color: rgba(255, 255, 255, 0.7);
 }
 
