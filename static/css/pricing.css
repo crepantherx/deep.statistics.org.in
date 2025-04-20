@@ -9,20 +9,20 @@
 
 .service-tiers > .card {
     display: grid;
-    place-items: center;
-    place-content: center;
+    place-items: baseline;
+    place-content: baseline;
     place-self: center;
     text-align: center;
     font-family: 'Uni Sans Heavy Regular', cursive;
     color: #929292;
     /*border: 1px solid #252424;*/
-    gap: 15px;
-    padding: 50px;
+    gap: 10px;
+    padding: 20px;
     box-shadow: 0px 0px 120px rgba(80, 82, 91, 0.44);
     border-radius: 50px;
 
-    width: 180px; /* Width of the book */
-    /*height: 200px; !* Height of the book *!*/
+    /*width: 180px; !* Width of the book *!*/
+    height: 40vh; /* Height of the book */
     position: relative;
 }
 
