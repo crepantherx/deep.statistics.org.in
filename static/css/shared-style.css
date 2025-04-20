@@ -83,8 +83,8 @@ header {
 .logo a {
     color: white;
     text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: 1.3rem;
+    /*font-weight: 500;*/
     font-family: 'Tourney', sans-serif;
 }
 
@@ -98,9 +98,10 @@ header {
 .nav-links a {
     color: white;
     text-decoration: none;
-    font-size: 0.875rem;
+    font-size: 0.880rem;
     font-weight: 500;
     transition: color 0.3s ease;
+    letter-spacing: .04em;
     font-family: 'Uni Sans Heavy Regular', 'Uni Sans', sans-serif;
 }
 
@@ -236,7 +237,7 @@ header {
     text-decoration: none;
     font-size: 0.875rem;
     padding: 0.75rem 2rem;
-    font-family: 'Uni Sans Heavy Regular', 'Uni Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     transition: background-color 0.3s ease;
 }
 
