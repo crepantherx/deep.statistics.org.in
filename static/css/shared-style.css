@@ -448,3 +448,19 @@ header > nav > div {
     border-right: 1px solid white;
     border-bottom: 1px solid white;
 }
+
+
+
+.logged-in-header-talk-to-us {
+    font-size: 0.8rem;
+    color: white;
+    background-color: #000000;
+    font-family: 'Uni Sans Heavy Regular', cursive;
+    padding: 3px 30px 3px 30px;
+    border-radius: 50px;
+    box-shadow:
+            4px 4px 12px rgba(50, 44, 44, 0.78),
+            -4px -4px 12px rgba(221, 220, 220, 0.37);
+    margin-left: 50px;
+
+}

@@ -32,7 +32,7 @@ def login_view(request):
             login(request, user)
             messages.success(request, 'Logged in successfully!')
             # return redirect('home')
-            return HttpResponseRedirect('https://app.deep.statistics.org.in')
+            return render(request, 'app/dashboard.html', )
         else:
             # Handle unsuccessful login by adding an error message
             messages.error(request, 'Invalid username or password.')
@@ -41,6 +41,8 @@ def login_view(request):
         form = LoginForm()
     return render(request, 'app/login.html', {'form': form})
 
+def dashboard(request):
+    return render(request, 'app/dashboard.html')
 def logout_view(request):
     logout(request)
     # Clear any existing messages before adding the new one

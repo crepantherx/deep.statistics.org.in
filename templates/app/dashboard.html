@@ -1,0 +1,110 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+
+                <div id="layout">
+        <div id="head" style="font-family: 'Uni Sans Heavy Regular', 'Uni Sans', sans-serif">Quick Start</div>
+        <div id="tail">
+
+    <fieldset>
+
+
+
+<!-- Quick Start Section -->
+    <section class="quick-start">
+      <p>Upload your data to get started with automated analysis
+
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="icon">📄</div>
+          <h3>Upload Data</h3>
+          <p>Upload your data files or connect to external data sources</p>
+          <button class="explore-btn">Explore</button>
+        </div>
+
+        <div class="card active">
+          <div class="icon">📊</div>
+          <h3>Data Analysis</h3>
+          <p>Get comprehensive statistical analysis of your data</p>
+          <button class="explore-btn">Explore</button>
+        </div>
+
+        <div class="card">
+          <div class="icon">📈</div>
+          <h3>Visualizations</h3>
+          <p>Create beautiful charts and graphs from your data</p>
+          <button class="explore-btn">Explore</button>
+        </div>
+
+        <div class="card">
+          <div class="icon">✨</div>
+          <h3>AI Insights</h3>
+          <p>Get AI-powered insights and predictions from your data</p>
+          <button class="explore-btn">Explore</button>
+        </div>
+
+        <div class="card">
+          <div class="icon">💬</div>
+          <h3>Chat Interface</h3>
+          <p>Ask questions about your data using natural language</p>
+          <button class="explore-btn">Explore</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Datasets Section -->
+    <section class="recent-datasets">
+      <h2>Recent Datasets</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>NAME</th>
+            <th>TYPE</th>
+            <th>DATE</th>
+            <th>SIZE</th>
+            <th>ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sales Data 2023</td>
+            <td>CSV</td>
+            <td>2023-12-15</td>
+            <td>2.4 MB</td>
+            <td><button class="action-btn">Analyze</button></td>
+          </tr>
+          <tr>
+            <td>Customer Feedback</td>
+            <td>JSON</td>
+            <td>2023-12-10</td>
+            <td>1.8 MB</td>
+            <td><button class="action-btn">Analyze</button></td>
+          </tr>
+          <tr>
+            <td>Product Inventory</td>
+            <td>Excel</td>
+            <td>2023-12-05</td>
+            <td>3.2 MB</td>
+            <td><button class="action-btn">Analyze</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+
+
+    </fieldset>
+            </div></div>
+
+
+
+
+{% endblock %}

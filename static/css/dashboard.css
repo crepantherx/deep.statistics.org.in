@@ -1,0 +1,161 @@
+
+/* Quick Start Section */
+.quick-start {
+  margin-bottom: 40px;
+}
+
+.quick-start h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.quick-start p {
+  font-size: 14px;
+  color: #b0b0b0;
+  margin-bottom: 20px;
+}
+
+.upload-btn {
+  background-color: transparent;
+  border: 2px solid #4a90e2;
+  color: #4a90e2;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  float: right;
+}
+
+.upload-btn:hover {
+  background-color: #4a90e2;
+  color: #fff;
+}
+
+/* Cards Layout */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  background-color: #2a2a2a;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 20px;
+  width: calc(33.33% - 20px);
+  box-sizing: border-box;
+  transition: border 0.3s ease;
+}
+
+.card.active {
+  border: 2px solid #4a90e2;
+}
+
+.card .icon {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #b0b0b0;
+  margin-bottom: 20px;
+}
+
+.explore-btn {
+  background-color: transparent;
+  border: none;
+  color: #4a90e2;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.explore-btn:hover {
+  text-decoration: underline;
+}
+
+/* Recent Datasets Section */
+.recent-datasets h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.recent-datasets table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #2a2a2a;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.recent-datasets th,
+.recent-datasets td {
+  padding: 15px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.recent-datasets th {
+  background-color: #333;
+  color: #b0b0b0;
+  text-transform: uppercase;
+}
+
+.recent-datasets td {
+  border-bottom: 1px solid #444;
+}
+
+.recent-datasets tr:last-child td {
+  border-bottom: none;
+}
+
+.action-btn {
+  background-color: transparent;
+  border: none;
+  color: #4a90e2;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.action-btn:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+  }
+
+  .upload-btn {
+    float: none;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+.logged-in-header-talk-to-us {
+    font-size: 0.8rem;
+    color: white;
+    background-color: #000000;
+    font-family: 'Uni Sans Heavy Regular', cursive;
+    padding: 3px 30px 3px 30px;
+    border-radius: 50px;
+    box-shadow:
+            4px 4px 12px rgba(50, 44, 44, 0.78),
+            -4px -4px 12px rgba(221, 220, 220, 0.37);
+    margin-left: 50px;
+
+}

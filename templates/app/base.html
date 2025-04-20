@@ -35,13 +35,26 @@
                     </button>
                     <nav class="side-panel" id="sidePanel">
                         <ul>
-                            <li><a href="{% url 'home' %}">Home</a></li>
-                            <li><a href="{% url 'services' %}">Services</a></li>
+
                             {% if request.user.is_authenticated %}
-                            <li><a href="{% url 'home' %}">Demo</a></li>
-{#                                <li><a href="https://app.statistics.org.in">Demo</a></li>#}
-                            {% endif %}
+                                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                                <li><a href="{% url 'dashboard' %}">Upload</a></li>
+                                <li><a href="{% url 'dashboard' %}">Analysis</a></li>
+                                <li><a href="{% url 'dashboard' %}">Visualization</a></li>
+                                <li><a href="{% url 'dashboard' %}">Insight</a></li>
+
+                            {% else %}
+                                 <li><a href="{% url 'home' %}">Home</a></li>
+                                <li><a href="{% url 'services' %}">Services</a></li>
                             <li><a href="mailto:business@statistics.org.in?subject=Contact%20Deep%20Statistics">Contact Us</a></li>
+
+                            {% endif %}
+
+
+
+
+
+
                         </ul>
                     </nav>
                 </div>
