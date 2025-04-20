@@ -38,14 +38,15 @@
             </div>
 
             <div class="nav-right">
-                <button class="profile-button" id="profile-button">
+                {% if request.user.is_authenticated %}
+                    <a href="https://app.deep.statistics.org.in" class="app-link">APP</a>
+                {% endif %}
+                <button class="profile-container" id="profile-button">
                     <svg class="profile-icon" viewBox="0 0 24 24">
                         <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/>
                     </svg>
                 </button>
-                {% if request.user.is_authenticated %}
-                    <a href="https://app.deep.statistics.org.in" class="download-button">APP</a>
-                {% else %}
+                {% if not request.user.is_authenticated %}
                     <a href="{% url 'register' %}" class="download-button">SIGN UP</a>
                 {% endif %}
             </div>
@@ -72,10 +73,15 @@
 
         <div class="profile-menu" id="profile-menu">
             {% if request.user.is_authenticated %}
-                <a href="{% url 'logout' %}">Logout</a>
+                <div class="profile-info">
+                    <div class="user-name">{{ request.user.first_name|upper }} {{ request.user.last_name|upper }}</div>
+                    <div class="user-email">{{ request.user.email }}</div>
+                </div>
+                <a href="{% url 'profile' %}" class="settings-link">ACCOUNT SETTINGS</a>
+                <a href="{% url 'logout' %}" class="logout-link">LOG OUT</a>
             {% else %}
-                <a href="{% url 'login' %}">Login</a>
-                <a href="{% url 'register' %}">Sign Up</a>
+                <a href="{% url 'login' %}">LOGIN</a>
+                <a href="{% url 'register' %}">SIGN UP</a>
             {% endif %}
         </div>
     </header>

@@ -67,13 +67,17 @@ header {
 
 .main-nav {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
+    padding: 0 4rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     height: 100%;
+}
+
+.logo {
+    justify-self: start;
 }
 
 .logo a {
@@ -81,13 +85,14 @@ header {
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: 500;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Tourney', sans-serif;
 }
 
 .nav-links {
     display: flex;
     gap: 2rem;
     align-items: center;
+    justify-self: center;
 }
 
 .nav-links a {
@@ -96,7 +101,7 @@ header {
     font-size: 0.875rem;
     font-weight: 500;
     transition: color 0.3s ease;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Uni Sans Heavy Regular', 'Uni Sans', sans-serif;
 }
 
 .nav-links a:hover {
@@ -107,9 +112,24 @@ header {
     display: flex;
     align-items: center;
     gap: 1rem;
+    justify-self: end;
 }
 
-.profile-button {
+.app-link {
+    color: white;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: 'Uni Sans Heavy Regular', 'Uni Sans', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.app-link:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.profile-container {
+    z-index: 100;
     background: none;
     border: none;
     cursor: pointer;
@@ -119,9 +139,30 @@ header {
 }
 
 .profile-icon {
+    width: 25px;
+    height: 25px;
+    fill: white;
+    background: #000000;
+}
+
+.app-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.app-icon {
     width: 20px;
     height: 20px;
     fill: white;
+    transition: opacity 0.3s ease;
+}
+
+.app-icon:hover {
+    opacity: 0.7;
 }
 
 .download-button {
@@ -177,7 +218,7 @@ header {
     text-decoration: none;
     font-size: 0.875rem;
     padding: 0.75rem 2rem;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Uni Sans Heavy Regular', 'Uni Sans', sans-serif;
     transition: background-color 0.3s ease;
 }
 
@@ -189,27 +230,66 @@ header {
     display: none;
     position: absolute;
     top: 60px;
-    right: 2rem;
-    background-color: rgba(0, 0, 0, 0.95);
+    right: 4rem;
+    background-color: rgba(18, 18, 18, 0.95);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-    padding: 0.5rem 0;
-    min-width: 150px;
+    border-radius: 12px;
+    padding: 1rem 0;
+    min-width: 280px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    z-index: 1000;
+    flex-direction: column;
+}
+
+.profile-info {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 0.5rem;
+}
+
+.user-name {
+    color: white;
+    font-family: 'Uni Sans Heavy Regular', 'Uni Sans', sans-serif;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+.user-email {
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Uni Sans Heavy Regular', 'Uni Sans', sans-serif;
+    font-size: 0.875rem;
 }
 
 .profile-menu a {
     display: block;
     color: white;
     text-decoration: none;
-    padding: 0.5rem 2rem;
+    padding: 0.75rem 1.5rem;
     font-size: 0.875rem;
-    font-family: 'Inter', sans-serif;
-    transition: background-color 0.3s ease;
+    font-family: 'Uni Sans Heavy Regular', 'Uni Sans', sans-serif;
+    transition: background-color 0.2s ease;
 }
 
 .profile-menu a:hover {
     background-color: rgba(255, 255, 255, 0.1);
+}
+
+.settings-link {
+    color: white;
+}
+
+.logout-link {
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logout-link::after {
+    content: '→';
+    font-size: 1.2em;
+    line-height: 1;
 }
 
 .profile-menu.active,
@@ -217,7 +297,17 @@ header {
     display: flex;
 }
 
+.profile-menu.active {
+    display: flex !important;
+}
+
 @media screen and (max-width: 768px) {
+    .main-nav {
+        padding: 0 1.5rem;
+        display: flex;
+        justify-content: space-between;
+    }
+    
     .desktop-nav {
         display: none;
     }
@@ -244,15 +334,21 @@ header {
 
     main {
         margin-top: 60px;
-        padding: 1rem;
+        padding: 0 1.5rem;
     }
 
     footer {
-        padding: 1rem;
+        padding: 1.5rem;
+        margin: 1rem auto;
     }
 
     footer nav {
         gap: 1rem;
+    }
+
+    .profile-menu {
+        right: 1.5rem;
+        min-width: 260px;
     }
 }
 
@@ -328,14 +424,6 @@ position: fixed;
     font-family: 'Uni Sans Heavy Regular', 'Uni Sans', sans-serif;
 }
 
-.profile-container {
-    z-index: 100;
-    background: none;
-    border: none;
-    cursor: pointer;
-    /*padding: 10px;*/
-}
-
 .profile-dropdown {
     position: absolute;
     top: 100%;
@@ -371,9 +459,9 @@ position: fixed;
 main {
     flex: 1;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 80px auto 0;
-    padding: 0 2rem;
+    padding: 0 4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -439,9 +527,9 @@ legend {
 
 footer {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 2rem auto;
-    padding: 2rem;
+    padding: 2rem 4rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
