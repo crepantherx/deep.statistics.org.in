@@ -33,18 +33,15 @@
 }
 
 body {
+    margin: 0;
+    padding: 0;
     overflow: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    display: grid;
-    place-items: center;
-    place-content: center;
-    background-color: #000000;
-    grid-template-rows: auto 1fr auto;
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
-    overflow-y: auto; /* Enables vertical scrolling */
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    background-color: #000000;
 }
 
 body ::-webkit-scrollbar {
@@ -54,54 +51,325 @@ body ::-webkit-scrollbar {
 body > header,
 body > main,
 body > footer {
-    width: 80vw;
+    width: 100%;
 }
 
 header {
     background-color: #000000;
-    text-align: center;
     width: 100%;
-    display: grid;
-    gap: 15px;
-    font-family: 'Inter', sans-serif;
-    place-content: center;
-    place-items: center;
-    place-self: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    height: 60px;
 }
 
-header > nav {
-    width: 95vw;
+.main-nav {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 4rem;
     display: grid;
-    place-items: center;
-    place-content: space-between;
-    grid-auto-flow: column;
-    padding-bottom:5px;
-    font-family: 'Tourney', sans-serif;
-    border-bottom: 1px solid #252424;
-
-
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    height: 100%;
 }
 
-header > nav > a {
-    text-decoration: none;
-    font-size: 1.5rem;
+.logo {
+    justify-self: start;
+}
+
+.logo a {
     color: white;
+    text-decoration: none;
+    font-size: 1.3rem;
+    /*font-weight: 500;*/
+    font-family: 'Tourney', sans-serif;
 }
 
-.hamburger {
-    z-index: 100;
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-self: center;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.880rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    letter-spacing: .04em;
+    font-family: 'Uni Sans Heavy Regular', 'Uni Sans', sans-serif;
+}
+
+.nav-links a:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-self: end;
+}
+
+.app-link {
+    color: white;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: 'Uni Sans Heavy Regular', 'Uni Sans', sans-serif;
+    transition: color 0.3s ease;
+    margin-right: 0.5rem;
+}
+
+.app-link:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.login-button {
+    color: white;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: 'Uni Sans Heavy Regular', 'Uni Sans', sans-serif;
+    transition: color 0.3s ease;
+    margin-right: 0.5rem;
+}
+
+.login-button:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.profile-container {
+    position: relative;
+    z-index: 1001;
     background: none;
     border: none;
     cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    pointer-events: auto;
+}
+
+.profile-icon {
+    width: 25px;
+    height: 25px;
+    fill: white;
+    background: transparent;
+    pointer-events: none;
+}
+
+.app-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.app-icon {
+    width: 20px;
+    height: 20px;
+    fill: white;
+    transition: opacity 0.3s ease;
+}
+
+.app-icon:hover {
+    opacity: 0.7;
+}
+
+.download-button {
+    background-color: white;
+    color: black;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.download-button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-1px);
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
 }
 
 .hamburger .line {
     display: block;
-    width: 20px;
-    height: 1px;
-    background: #ffffff;
-    margin: 6px 0;
-    transition: all 0.3s ease;
+    width: 24px;
+    height: 2px;
+    background: white;
+    margin: 4px 0;
+    transition: transform 0.3s ease;
+}
+
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.875rem;
+    padding: 0.75rem 2rem;
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.mobile-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.profile-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 4rem;
+    background-color: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem 0;
+    min-width: 280px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    z-index: 1001;
+    flex-direction: column;
+    pointer-events: auto;
+}
+
+.profile-info {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 0.5rem;
+}
+
+.user-name {
+    color: white;
+    font-family: 'Uni Sans Heavy Regular', 'Uni Sans', sans-serif;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+.user-email {
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Uni Sans Heavy Regular', 'Uni Sans', sans-serif;
+    font-size: 0.875rem;
+}
+
+.profile-menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-family: 'Uni Sans Heavy Regular', 'Uni Sans', sans-serif;
+    transition: background-color 0.2s ease;
+}
+
+.profile-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.settings-link {
+    color: white;
+}
+
+.logout-link {
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logout-link::after {
+    content: '→';
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+.profile-menu.active,
+.mobile-nav.active {
+    display: flex;
+}
+
+.profile-menu.active {
+    display: flex !important;
+}
+
+@media screen and (max-width: 768px) {
+    .main-nav {
+        padding: 0 1.5rem;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .desktop-nav {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-right {
+        margin-right: 1rem;
+    }
+
+    .hamburger.active .line:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+
+    .hamburger.active .line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .line:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+
+    main {
+        margin-top: 60px;
+        padding: 0 1.5rem;
+    }
+
+    footer {
+        padding: 1.5rem;
+        margin: 1rem auto;
+    }
+
+    footer nav {
+        gap: 1rem;
+    }
+
+    .profile-menu {
+        right: 1.5rem;
+        min-width: 260px;
+    }
 }
 
 .side-panel {
@@ -176,23 +444,6 @@ position: fixed;
     font-family: 'Uni Sans Heavy Regular', 'Uni Sans', sans-serif;
 }
 
-.profile-container {
-    z-index: 100;
-    background: none;
-    border: none;
-    cursor: pointer;
-    /*padding: 10px;*/
-}
-
-.profile-icon {
-    width: 25px;
-    height: 25px;
-    fill: #ffffff;
-    background: #000000;
-}
-
-
-
 .profile-dropdown {
     position: absolute;
     top: 100%;
@@ -226,12 +477,14 @@ position: fixed;
 
 
 main {
-    display: grid;
-    grid-template-columns: 1fr;
-    /*margin: 2rem;*/
-    place-content: flex-start;
-    place-items: center;
-    /*margin: 40px;*/
+    flex: 1;
+    width: 100%;
+    max-width: 1400px;
+    margin: 80px auto 0;
+    padding: 0 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 main > div {
     color: white;
@@ -293,52 +546,31 @@ legend {
 
 
 footer {
-    padding: 10px;
-    background-color: #000000;
-    text-align: center;
-    width: max-content;
+    width: 100%;
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 2rem 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer nav {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
-    font-family: 'Inter', sans-serif;
-    align-items: center;
     justify-content: center;
-    margin: auto;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
-footer > section {
-    display: grid;
-    place-items: center;
-    place-content: center;
-    place-self: center;
-    text-align: center;
-    grid-auto-flow: column;
-    gap: 5px;
-}
-
-
-footer > nav {
-    border-top: 1px solid #252424;
-    width: 95vw;
-    display: grid;
-    grid-auto-flow: column;
-    place-items: center;
-    place-self: center;
-    place-content: space-evenly;
-    padding: 10px;
-    font-family: 'Uni Sans Heavy Regular', cursive;
-}
-footer > nav > a {
+footer nav a {
+    color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
-    font-size: 12px;
-    color: #a4a4a4;
+    font-size: 0.875rem;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.3s ease;
 }
 
-footer > nav > section > img{
-            width: 16px;
-            place-items: center;
-            place-content: center;
-        }
+footer nav a:hover {
+    color: white;
+}
 
 
 
@@ -365,32 +597,8 @@ body > footer {
     width: auto;
 }
 
-    header > nav {
-    width: 100vw;
-    display: grid;
-    place-items: center;
-    place-content: space-between;
-    grid-auto-flow: column;
-    padding-bottom:5px;
-    font-family: 'Tourney', sans-serif;
-    border-bottom: 1px solid #252424;
-        gap: 25px;
-
-
-
-}
-
-    footer > nav {
-    border-top: 1px solid #252424;
-    width: 100vw;
-    display: grid;
-    grid-auto-flow: column;
-    place-items: center;
-    place-self: center;
-    place-content: space-evenly;
-    padding: 10px;
-    font-family: 'Uni Sans Heavy Regular', cursive;
-        gap: 10px;
+    footer nav {
+    gap: 1rem;
 }
 
 
