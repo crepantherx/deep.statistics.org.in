@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-tc^xhresn-grikz9-a33mjc7ve#2zdpz=w&nux*#^6tncj&=4q"
 DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', 'localhost', 'testing.statistics.org.in', 'deep.statistics.org.in']
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', 'localhost', 'testing.statistics.org.in', 'deep.statistics.org.in', 'deepstatistics.co.in']
 
 INSTALLED_APPS = [
     "django.contrib.admin",
